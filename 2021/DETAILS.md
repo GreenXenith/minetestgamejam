@@ -39,8 +39,9 @@ _(All dates are 00:00UTC)_
 * Results will be totalled and announced **December 31st** (or Jan. 1st).
 
 ## How do I participate?
-Simple: Submit a game to [the Content Database](https://content.minetest.net/) by the deadline with the `Jam / Community 2021` tag (coming soon).  
+Simple: Submit a game to [the Content Database](https://content.minetest.net/) by the deadline with the `Jam / Game 2021` tag.  
 
+The tag will not be available until December 1st! Releases made before December 1st will be disqualified!  
 Packages will be held until work time ends and then approved to open for ratings.  
 
 ### Rules
@@ -48,6 +49,7 @@ Packages will be held until work time ends and then approved to open for ratings
 * Third-party libraries and assets may be used, but core gameplay must be own work
   * We **highly recommend** using git submodules for third-party libraries
 * Teams are allowed (any size allowed, participants may participate in multiple teams and individually)
+* Submissions must follow [CDB Guidelines](https://content.minetest.net/policy_and_guidance/)
 * CDB Packages must be tagged appropriately (event tag)
 * Participants found unfairly influencing reviews will be **immediately disqualified**, but their package (if submitted) may remain as a regular CDB package
 
