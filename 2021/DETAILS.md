@@ -36,7 +36,7 @@ _(All dates are 00:00UTC)_
 * The game jam starts **December 1st**.  
 * Development time ends **December 21st**.
 * Rating begins immediately after, and ends **December 30th**.
-* Results will be totalled and announced **December 31st** (or Jan. 1st).
+* Results will be totaled and announced **December 31st** (or Jan. 1st).
 
 ## How do I participate?
 Simple: Submit a game to [the Content Database](https://content.minetest.net/) by the deadline with the `Jam / Game 2021` tag.  
@@ -128,6 +128,6 @@ If you have any questions, ask here or in response to any other announcement on 
 
 * * *
 
-A mirror of this page is held on the [Minetest Forums](#) and on the [Minetest Subreddit](#).  
+A mirror of this page is held on the [Minetest Forums](https://forum.minetest.net/viewtopic.php?f=3&t=27512) and on the [Minetest Subreddit](https://www.reddit.com/r/Minetest/comments/qzvd3o).  
 
 A copy of this page is held in the [data repository](https://github.com/GreenXenith/minetestgamejam). All relevant documents, details, and other information are in this repository.  
