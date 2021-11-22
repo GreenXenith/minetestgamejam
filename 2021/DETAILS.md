@@ -41,7 +41,7 @@ _(All dates are 00:00UTC)_
 ## How do I participate?
 Simple: Submit a game to [the Content Database](https://content.minetest.net/) by the deadline with the `Jam / Game 2021` tag.  
 If you are on a team, choose one person to submit your package. **Make sure to list all your team members!**  
-Only **one submission** will be counted **per participant!** You could be on multiple teams and by yourself to have multiple submissions.  
+Only **one submission** will be counted **per participant** (the last one submitted). You could be on multiple teams and by yourself to have multiple submissions.  
 
 The tag will not be available until December 1st! Releases made before December 1st will be disqualified!  
 Packages will be held until work time ends and then approved to open for ratings.  
