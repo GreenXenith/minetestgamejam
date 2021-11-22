@@ -14,7 +14,7 @@ This is the first "legit" game jam for the Minetest community, and we hope it br
 * It's easy!
 
 ## What do I do?
-Your goal is to **make a _small_, complete, self-contained experience**.  
+Your goal is to **make a _small_, complete, self-contained game experience**.  
 
 Some examples of the size of game we are looking for:
 * https://content.minetest.net/packages/Hume2/boxworld3d/
