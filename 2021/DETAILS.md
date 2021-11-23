@@ -49,6 +49,7 @@ Packages will be held until work time ends and then approved to open for ratings
 ### Rules
 * Game must be created entirely within allotted time-frame
   * You should **not** be building off of an existing game (like MTG)
+  * Pre-made libraries/assets **must be documented** somewhere
 * Third-party libraries and assets may be used, but core gameplay must be own work
   * You **must document** which content is made by you and which is not (can use licenses to document)
   * We **highly recommend** using git submodules for third-party libraries
