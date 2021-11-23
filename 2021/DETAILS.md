@@ -47,11 +47,13 @@ The tag will not be available until December 1st! Releases made before December 
 Packages will be held until work time ends and then approved to open for ratings.  
 
 ### Rules
-* Game must be created within allotted time-frame
+* Game must be created entirely within allotted time-frame
+  * You should **not** be building off of an existing game (like MTG)
 * Third-party libraries and assets may be used, but core gameplay must be own work
   * We **highly recommend** using git submodules for third-party libraries
 * Teams are allowed (any size allowed, participants may participate in multiple teams and individually)
 * Submissions must follow [CDB Guidelines](https://content.minetest.net/policy_and_guidance/)
+* Game must be compatible with latest stable version at start of the jam (Dec. 1st, 5.4.1)
 * CDB Packages must be tagged appropriately (event tag)
 * Participants found unfairly influencing reviews will be **immediately disqualified**, but their package (if submitted) may remain as a regular CDB package
 
