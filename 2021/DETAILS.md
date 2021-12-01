@@ -110,6 +110,7 @@ Current contributors:
 * MinetestVideos
 * cupOjoseph
 * GreenXenith
+* Norojop
 
 ### Disclaimer
 By participating and/or contributing, you understand and accept that prize money will be aggregated and distributed by a private third-party (GreenXenith) through a secondary proprietary third-party service (PayPal) to you (the contestant) or the destination of your choice, at the discretion of the private handler (GreenXenith). 
