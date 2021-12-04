@@ -92,7 +92,7 @@ For more info on how scoring works, see [the full details](PLANNING.md#scoring).
 Bragging rights! A cool game! Oh, and some money!  
 The **top 3** winners will win portions of the prize pool.  
 
-_Current Prize Pool:_ **$500**
+_Current Prize Pool:_ **$620**
 
 Portions are subject to change, but you can expect roughly 50%/30%/20% for 1st/2nd/3rd.  
 Winners will be contacted for payment address (PayPal account, charity, or other participant).  
@@ -111,6 +111,7 @@ Current contributors:
 * cupOjoseph
 * GreenXenith
 * Norojop
+* Blockhead
 
 ### Disclaimer
 By participating and/or contributing, you understand and accept that prize money will be aggregated and distributed by a private third-party (GreenXenith) through a secondary proprietary third-party service (PayPal) to you (the contestant) or the destination of your choice, at the discretion of the private handler (GreenXenith). 
