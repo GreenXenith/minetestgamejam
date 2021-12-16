@@ -34,7 +34,7 @@ Need game ideas? How about:
 ## When is it happening?
 _(All dates are 00:00UTC)_  
 * The game jam starts **December 1st**.  
-* Development time ends **December 21st**.
+* Development time ends **December 22nd**.
 * Rating begins immediately after, and ends **December 30th**.
 * Results will be totaled and announced **December 31st** (or Jan. 1st).
 
@@ -60,7 +60,7 @@ Packages will be held until work time ends and then approved to open for ratings
 * Participants found unfairly influencing reviews will be **immediately disqualified**, but their package (if submitted) may remain as a regular CDB package
 
 ## Rating and Scoring
-On **December 21st** all submissions will be approved (if they meet CDB guidelines) and opened for playing/rating.  
+On **December 22nd** all submissions will be approved (if they meet CDB guidelines) and opened for playing/rating.  
 
 ### Your Job
 Play and review submission with the [event tag](#). Your +1/-1 will contribute to the community score for each package.  
