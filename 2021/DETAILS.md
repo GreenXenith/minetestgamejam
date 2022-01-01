@@ -1,4 +1,4 @@
-![banner](banner.png)
+![banner](images/banner.png)
 
 Announcing ... \*drumroll\* ... the **2021 Minetest GAME JAM**!  
 
