@@ -35,8 +35,8 @@ Need game ideas? How about:
 _(All dates are 00:00UTC)_  
 * The game jam starts **December 1st**.  
 * Development time ends **December 22nd**.
-* Rating begins immediately after, and ends **December 30th**.
-* Results will be totaled and announced **December 31st** (or Jan. 1st).
+* Rating begins immediately after, and ends **Jan 1st**.
+* Results will be totaled and announced **Jan 1st**.
 
 ## How do I participate?
 Simple: Submit a game to [the Content Database](https://content.minetest.net/) by the deadline with the `Jam / Game 2021` tag.  
