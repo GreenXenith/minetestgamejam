@@ -30,6 +30,13 @@ const graph = data => {
         return
     }
 
+    if (process.argv.includes("--reviewtotal")) {
+        for (const score of data) {
+            console.log(process.argv.includes("--unfiltered") ? score.ratings.total : score.ratings.total_valid);
+        }
+        return
+    }
+
     let table = [];
     for (const score of data) {
         const r = score.ratings;
