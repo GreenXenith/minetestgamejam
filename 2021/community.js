@@ -1,7 +1,6 @@
 #!/bin/node
 
 // Downloads and calculates data for community ratings
-// TODO: Filter reviews before date
 
 // Commandline switches:
 //  --alphabetical: Sorts packages alphabetically by title instead of score
@@ -9,6 +8,7 @@
 //  --scoresonly: Only lists scores (no table)
 
 const https = require("https");
+const deadline = new Date(Date.UTC(2022));
 
 const fetch = (url, callback) => https.get(url, res => {
     let data = "";
@@ -28,7 +28,7 @@ const graph = data => {
             console.log(score.score);
         }
         return
-    }  
+    }
 
     let table = [];
     for (const score of data) {
@@ -63,16 +63,18 @@ fetch("https://content.minetest.net/api/packages/?tag=jam_game_2021", async pack
         const reviews = await new Promise(resolve => fetch(`https://content.minetest.net/api/packages/${package.author}/${package.name}/reviews/`, resolve));
 
         for (const review of reviews) {
-            const valid = process.argv.includes("--unfiltered") ? true : review.votes.unhelpful <= review.votes.helpful;
-            if (review.is_positive) {
-                ratings.positive++;
-                if (valid) ratings.positive_valid++;
-            } else {
-                ratings.negative++;
-                if (valid) ratings.negative_valid++;
+            if (new Date(review.created_at + "Z") < deadline) {
+                const valid = process.argv.includes("--unfiltered") ? true : review.votes.unhelpful <= review.votes.helpful;
+                if (review.is_positive) {
+                    ratings.positive++;
+                    if (valid) ratings.positive_valid++;
+                } else {
+                    ratings.negative++;
+                    if (valid) ratings.negative_valid++;
+                }
+                ratings.total++;
+                if (valid) ratings.total_valid++;
             }
-            ratings.total++;
-            if (valid) ratings.total_valid++;
         }
 
         scores.push({
