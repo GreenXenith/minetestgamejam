@@ -132,7 +132,7 @@
 
 > What it says on the tin. You collect coconuts. No real goals though, and the collection process is extremely slow. The tool upgrade also doesn't let you select what you want, or tell you what each one costs (I figured it out from the CDB listing). _(GreenXenith)_
 
-> Stopped at 5 coconuts due to wrist health concerns, had to take the rest of the day off from judging as a precaution _(Hugues Ross)_
+> [Stopped at 5 coconuts due to wrist health concerns, had to take the rest of the day off from judging as a precaution](https://content.minetest.net/threads/1138/) _(Hugues Ross)_
 
 > Executing the /call chat command crashes the game. Seems to include lots of unused assets and code. _(Nathan Salapat/MinetestVideos)_
 
@@ -175,7 +175,7 @@
 
 > It has gameplay but not much else going for it. Finding the special present is mostly just tedium, and the chat hints aren't very helpful when they give mixed directions and the aisles arent labeled. _(GreenXenith)_
 
-> This game is an agonizingly dull exercise in frustration. First of all, if you die you respawn outside of the level and have to create an entirely new world to keep playing. The only monster type is very basic and nothing about its design relates to the theme of the game. Worse, they can hit you through walls! But what about the 'meat' of the game? Ultimately, this is a game about walking arounf a warehouse in search of a single green present. You're basically looking for a needle in a haystack while weird purple things harass you. After a while, I decided to cheat and try finding the present with flying and noclip. Easy, right? Well, after roughly half an hour of inspecting shelves I wasn't entirely sure that the green present even existed. After several more maps and looking at the code, I've come to the conclusion that the green present can exist, but that a map can also simply spawn without any (by placing them where the walls and shelves will go)... You can very well be softlocked straight from the first second of playtime. _(Hugues Ross)_
+> This game is an agonizingly dull exercise in frustration. First of all, if you die you respawn outside of the level and have to create an entirely new world to keep playing. The only monster type is very basic and nothing about its design relates to the theme of the game. Worse, they can hit you through walls! But what about the 'meat' of the game? Ultimately, this is a game about walking arounf a warehouse in search of a single green present. You're basically looking for a needle in a haystack while weird purple things harass you. After a while, I decided to cheat and try finding the present with flying and noclip. Easy, right? Well, after roughly half an hour of inspecting shelves I wasn't entirely sure that the green present even existed. After several more maps and looking at the code, I've come to the conclusion that the green present **can** exist, but that a map can also simply spawn without any (by placing them where the walls and shelves will go)... You can very well be softlocked straight from the first second of playtime. _(Hugues Ross)_
 
 > Copied all of MTG for a handful of items. _(Nathan Salapat/MinetestVideos)_
 
@@ -186,7 +186,7 @@
 
 > Essentially Labyrinth but prison themed. The enemies were good enough to fight. The generated trash cans and vending machines were a neat addition. The maze itself is rather bland, it barely resembles a prison (prisons aren't even mazes but whatever). I'm not fond of first-person mazes myself, but it seemed like the enemies increased rank the closer you got, which helped. Including the recorded dialogue was humorous :) _(GreenXenith)_
 
-> I think this is a really neat twist of existing content for minetest, taking familiar pieces and combining them into something new and fresh feeling. My main complaint is that success is highly RNG dependent - In my first run I didn't get any weapons at all, whereas in my second I was swimming in them... there are also a couple bugs, like picked up items being inaccessible if your hotbar is full and enemies killing you while you're in the main menu. But overall, I'm kinda into this. I'd like to see it mature more.  _(Hugues Ross)_
+> I think this is a really neat twist of existing content for minetest, taking familiar pieces and combining them into something new and fresh feeling. My main complaint is that success is **highly RNG dependent** - In my first run I didn't get any weapons at all, whereas in my second I was swimming in them... there are also a couple bugs, like picked up items being inaccessible if your hotbar is full and enemies killing you while you're in the main menu. But overall, I'm kinda into this. I'd like to see it mature more.  _(Hugues Ross)_
 
 > pretty good maze runner. Really adds depth to the maze. as far as the theme goes, it was well executed. It could have done better with instructions and the goal. _(MisterE)_
 
@@ -326,7 +326,7 @@
 
 > The modular room concept is interesting, but without any form of barrier between them, I found monsters tend to wander in while in the shop menu. It also crashed on first start. Grinding and crafting was a rather lengthy endeavor, and the reward wasn't worth it, especially when you don't know what to do with the items you craft. The rock didn't seem to do anything special? The last room also wasn't accessible. Interesting start. _(GreenXenith)_
 
-> All you can really do is walk back and forth poking cubes that make clanking noises until you get, like, 60 bucks at which point you can craft an entire rock that you can ineffectually toss once. There's the tantalizing promise of a 3rd dungeon room with lava in it, but I was unable to access this without noclip and it doesn't appear to contain anything of note. Consistently crashes on first launch. _(Hugues Ross)_
+> All you can really do is walk back and forth poking cubes that make clanking noises until you get, like, 60 bucks at which point you can craft **an entire rock** that you can ineffectually toss once. There's the tantalizing promise of a 3rd dungeon room with lava in it, but I was unable to access this without noclip and it doesn't appear to contain anything of note. Consistently crashes on first launch. _(Hugues Ross)_
 
 > Walking around works, that's about it. _(Nathan Salapat/MinetestVideos)_
 
