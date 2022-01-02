@@ -28,7 +28,7 @@ _Discarded Reviews_
 ## Judge Scores
 Judge scores are initially between 0 and 10 (inclusive) and later converted to a percentage. Some judges have also [provided detailed feedback](JUDGE_NOTES.md) on many of the games.
 
-_Judge Scores_
+_Judge Scores_ 
 ![judge scores](stats/graph_judge.png)
 
 _Judge Distribution (10 judges)_  
@@ -41,7 +41,7 @@ The objective rubric includes 3 criteria:
 * `Git` (+0.3): The game has a public git repository.
 * `No Manual Setup` (+0.2): The game handles all initial setup automatically (first-time kick is fine).
 
-_Objective Rubric_
+_Objective Rubric_ 
 ![objective rubric](stats/table_objective.png)
 
 ## Final Scores
