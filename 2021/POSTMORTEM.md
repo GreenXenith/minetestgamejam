@@ -50,7 +50,7 @@ So now what?
 Many people have already expressed interest in doing another jam this year, which is awesome! I had a lot of fun seeing the results of this one, and I hope you had a lot of fun participating! There are still a lot of questions to be answered about the next jam that we'll have to discuss thoroughly later:
 * Should it be always be games? Perhaps an engine jam? Or something else entirely?
 * Should it have a theme? Or some kind of new challenge?
-* If we are going to do this regularly, when will we do it? Personally, I want to do it every 11 or 13 months, **that** way more people can participate if scheduling conflicts.
+* If we are going to do this regularly, when will we do it? Personally, I want to do it every 11 or 13 months, that way more people can participate if scheduling conflicts.
 
 ### Rating System
 While the ContentDB reviews have their issues, there may be ways to fix it. Or, we may create a separate interface for jam ratings. Or maybe the ContentDB review system itself will change! This is a complex problem that will take quite a bit of triage.
