@@ -64,6 +64,6 @@ The judge system worked out well for this jam (even if a few judges cut it prett
 Next time we'll likely start announcing earlier, and on more platforms. Hopefully we can reach even more potential participants. We'll also hopefully get some sort of official central site set up for jam information.
 
 ## Final Thoughts
-I am overjoyed at how well this went. The amount of activity this spurred and the response from the community was unlike anything I've seen around here for a while. I don't have much else to say. Again, a heartfelt thank you to everyone that helped and participated. I look forward to the next one.
+I am relieved that this went so well. The amount of activity this spurred and the response from the community was unlike anything I've seen around here for a while. I don't have much else to say. Again, a heartfelt thank you to everyone that helped and participated. I look forward to the next one.
 
 _- GreenXenith_
