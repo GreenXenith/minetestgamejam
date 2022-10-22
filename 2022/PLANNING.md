@@ -42,7 +42,7 @@ Theme: ???, ???, ???
 ## Rules
 * Games must be completed within allotted window of time
 * Third-party libraries and assets may be used, but gameplay must be original work
-* Games must comply with ContentDB policies
+* Games must comply with [ContentDB policies](https://content.minetest.net/policy_and_guidance/)
 * Submissions may be authored by any amount of participants
 * Participants may have multiple submissions (this is discouraged)
 
@@ -50,7 +50,7 @@ Theme: ???, ???, ???
 * Games shall be uploaded to the [Minetest Content Database](https://content.minetest.net/)
 * Packages must be tagged using `Jam / Game 2022`
 * Packages will be held until work time ends, then approved for rating
-* REMINDER: Following ContentDB policy, games must use the `gamename_modname` prefix-style for mod nameing
+* Games **must** use the `gamename_modname` prefix-style for mod naming (good practice and proposed policy)
 
 ## Scoring
 Scoring will be done separately by both the community and a collection of judges. Jam winners will be determined via the judges, with a separate community winner voted by the community.  
