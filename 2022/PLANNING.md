@@ -93,7 +93,6 @@ Packages with identical scores will be ranked according to the following (in ord
 * Positive review total
 * Helpfulness of reviews
 * Package ID (time submitted)
-* Package name
 
 ## Prizes
 The winners will recieve 1/2, 1/3, and 1/6 of the prize pool for 1st, 2nd, and 3rd places, respectively.  
