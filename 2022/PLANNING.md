@@ -50,7 +50,9 @@ Theme: ???, ???, ???
 * Games shall be uploaded to the [Minetest Content Database](https://content.minetest.net/)
 * Packages must be tagged using `Jam / Game 2022`
 * Packages will be held until work time ends, then approved for rating
-* Games **must** use the `gamename_modname` prefix-style for mod naming (good practice and proposed policy)
+* Games **must** use the `gamename_modname` prefix-style for non-library\* mod naming (good practice and proposed policy)
+
+\* Libraries must follow the [Right to a Name policy](https://content.minetest.net/policy_and_guidance/#31-right-to-a-name). Git submodules recommended.  
 
 ## Scoring
 Scoring will be done separately by both the community and a collection of judges. Jam winners will be determined via the judges, with a separate community winner voted by the community.  
