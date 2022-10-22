@@ -103,9 +103,12 @@ Other prizes TBD.
 
 ### Pool and Payout
 The prize pool is funded by community contributions and jam management.  
-The pool cap is **$600USD**. The prize pool is held and managed through _PayPal_ by _GreenXenith_ (contact for contribution information).  
 
-**Paypal is required to receive funds.** This _is_ negotiable at payout, but entirely at the discretion of the handler. Payouts will be divided evenly for team winners. Remainders from uneven divisions will go to the [Minetest Project](https://www.minetest.net/get-involved/#donate).  
+The pool cap is **$600USD**. Contributions should not exceed this amount and will be refused once the cap is reached.  
+
+The prize pool is held and managed through _PayPal_ by _GreenXenith_ (contact for contribution information). Contributions to the pool will be accepted up to the end of the jam deadline.  
+
+**Paypal is required to contribute and receive funds.** This _is_ negotiable at payout, but entirely at the discretion of the handler. Payouts will be divided evenly for team winners. Remainders from uneven divisions will go to the [Minetest Project](https://www.minetest.net/get-involved/#donate).  
 
 ### Disclaimer
 By participating and/or contributing, you understand and accept that all involved funds will be aggregated and distributed by a private third-party (GreenXenith) through a proprietary third-party service (PayPal) to you (the contestant) or the destination of your choice, at the complete discretion of the private handler (GreenXenith).  
