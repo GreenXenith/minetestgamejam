@@ -29,10 +29,10 @@ Planning Document
 ## Schedule
 _All times are UTC_
 * Pre-November: Promotion
-* Tuesday, 01 November @00:00: Themes announced, development begins
-* Monday,  21 November @23:59: Development ends, rating begins
-* Monday,  28 November @23:59: Rating ends
-* Monday,  31 November @??:??: Tallying and results
+* Tuesday,   01 November @00:00: Themes announced, development begins
+* Monday,    21 November @23:59: Development ends, rating begins
+* Monday,    28 November @23:59: Rating ends
+* Wednesday, 30 November @??:??: Tallying and results
 
 ## Theme
 The 2022 jam will use a 3-word theme system. These will be announced when the jam begins.   
