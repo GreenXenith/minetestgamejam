@@ -27,6 +27,7 @@ Planning Document
  - [Jam Management](#jam-management)
 
 ## Schedule
+_All times are UTC_
 * Pre-November: Promotion
 * Tuesday, 01 November @00:00: Themes announced, development begins
 * Monday,  21 November @23:59: Development ends, rating begins
