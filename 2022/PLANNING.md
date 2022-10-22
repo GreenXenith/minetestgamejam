@@ -11,9 +11,9 @@ Planning Document
    - [Judge Scoring](#judge-scoring)
    - ["Bonuses"](#bonuses)
    - [Community Voting](#community-voting)
- - [Rubrics](#rubrics)
-   - [Judge Rubric](#judge-rubric)
-   - [Bonus Rubric](#bonus-rubric)
+   - [Rubrics](#rubrics)
+     - [Judge Rubric](#judge-rubric)
+     - [Bonus Rubric](#bonus-rubric)
    - [Tie Breaking](#tie-breaking)
  - [Prizes](#prizes)
    - [Pool and Payout](#pool-and-payout)
@@ -65,8 +65,8 @@ Some [objective features](#bonus-rubric) will add up to 10 points to the final s
 Package reviews will be used to determine a single "Community Winner". Each package will be scored as a percentage calculated with `(total_positive + 1) / (total reviews + 1)`. Reviews with more "unhelpful" votes than "helpful" votes will not be included in the calculation.  
 The highest rated package that **does not place** will be deemed the Community Winner.
 
-## Rubrics
-### Judge Rubric
+### Rubrics
+#### Judge Rubric
 Things that judges may be looking for in a submission.
 
 | Criteria   | Description                                   |
@@ -76,7 +76,7 @@ Things that judges may be looking for in a submission.
 | Content    | Is your game well-polished or packed with stuff to do? Is the art and sound consistent and cohesive? |
 | Theme      | How well does your game utilize the theme(s)? Did you apply the theme(s) in a clever way? |
 
-### Bonus Rubric
+#### Bonus Rubric
 These criteria will add points to your score.
 
 | Criteria                         | Points |
