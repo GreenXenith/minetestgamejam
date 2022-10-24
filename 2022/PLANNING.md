@@ -2,7 +2,6 @@
 Planning Document
 
 ## Table of Contents
- - [Table of Contents](#table-of-contents)
  - [Schedule](#schedule)
  - [Theme](#theme)
  - [Rules](#rules)
