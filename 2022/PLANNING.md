@@ -85,7 +85,7 @@ These criteria will add points to your score.
 | Criteria                         | Points |
 | -------------------------------- | ------ |
 | Is stable enough to complete.    | 5      |
-| Works out of the box\*.        | 3      |
+| Works out of the box\*.          | 3      |
 | Has a public **git** repository. | 2      |
 
 \* Must not require external applications (ie. Python, Luarocks) or out-of game configuration (including mod trust).
