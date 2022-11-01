@@ -72,6 +72,12 @@
                         timer.innerHTML = next[1];
                     }
                 }, 1000);
+
+                if (Date.parse(next[1])) {
+                    updateTimer(timer, Math.max(0, (next[1] - Date.now()) / 1000));
+                } else {
+                    timer.innerHTML = next[1];
+                }
             }
         </script>
         <img id="background" src="https://raw.githubusercontent.com/GreenXenith/minetestgamejam/master/2022/images/banner.png">
