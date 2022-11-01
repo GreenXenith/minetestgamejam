@@ -76,6 +76,36 @@ p#begins {
     text-shadow: 2px 2px 1px #312A33;
 }
 
+/* Footer */
+#cta {
+    display: inline-block;
+
+    padding: 0.8rem 1rem;
+    margin: 2em 0.25rem 0.25rem 0;
+
+    line-height: 1.5;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.3rem;
+
+    background: linear-gradient(to bottom, #bd6d7c, #aa616e);
+    border: 1px solid transparent;
+    color: white;
+
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    border-radius: 1.2rem;
+
+    cursor: pointer;
+
+    transition: filter 0.15s ease-in-out;
+}
+
+#cta:hover {
+    color: white;
+    text-decoration: none;
+    filter: brightness(1.1);
+}
+
 #soon {
     margin-top: auto;
 
