@@ -21,7 +21,7 @@
             // Update timestamp
             function setNext(what, when) {
                 const whenString = !Date.parse(when) ? "" : when.toLocaleString("en-US", {
-                    weekday: "long", year: "numeric", month: "long", day: "numeric", hour: "numeric", hour12: true, minute: "2-digit"
+                    weekday: "long", year: "numeric", month: "long", day: "numeric", hour: "numeric", hour12: true, minute: "2-digit", timeZoneName: "short"
                 });
                 document.getElementById("begins").innerHTML = `${what} ${whenString}`;
             }
