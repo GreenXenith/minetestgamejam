@@ -64,7 +64,7 @@ It is up to each judge how they score packages, though [a rubric will be provide
 Some [objective features](#bonus-rubric) will add up to 10 points to the final score. The final score will be out of 20, which means not meeting these criteria is a huge disadvantage.  
 
 ### Community Voting
-Package reviews will be used to determine a single "Community Winner". Each package will be scored as a percentage calculated with `(total_positive + 1) / (total reviews + 1)`. Reviews with at least 1 "helpful" vote but more "unhelpful" votes will not be included in the calculation.  
+Package reviews will be used to determine a single "Community Winner". Each package will be scored as a percentage calculated with `(total_positive + 1) / (total reviews + 1)`. Reviews with more unhelpful votes than helpful votes (+1 helpful vote) will not count towards the score.  
 The highest rated package that **does not place** will be deemed the Community Winner.
 
 ### Rubrics
