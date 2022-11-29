@@ -133,15 +133,19 @@ Judges are chosen from well-known and trusted members of the community by jam ma
 
 ### Current Judges
 This list is subject to change.
-* MisterE
-* GreenXenith
-* Warr1024
 * ExeVirus
+* GreenXenith
+* Krock
+* MisterE
+* rubenwardy
+* Warr1024
+* x2048
 
 ### Judge Participation
 Judges are allowed to make submissions. Submission rules:
 * Judges may not rate their own submissions
 * Judge entries are not elligible for prizes
+* Judge entries _are_ elligible for community winner
 * Judge submissions will be soft-ranked (not affecting actual package ranking)
 
 ## Promotion
