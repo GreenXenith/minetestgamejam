@@ -195,7 +195,7 @@ nav h2 {
     justify-content: center;
     align-items: center;
     position: relative;
-    z-index: 2;
+    z-index: 4;
     transform: skewY(-2deg);
     height: 7rem;
     background-color: var(--blue);
@@ -228,7 +228,7 @@ nav h2 {
     box-shadow: var(--section-shadow);
     transform-origin: bottom right;
     position: relative;
-    z-index: 1;
+    z-index: 3;
     transform: skewY(-1deg);
     padding-top: 1rem;
     background-color: rgb(21, 180, 132);
@@ -261,6 +261,7 @@ nav h2 {
     box-shadow: var(--section-shadow);
     position: relative;
     background-color: rgb(14, 109, 73);
+    z-index: 2;
 }
 
 #rules ul {
@@ -288,7 +289,7 @@ strong {
 
 #scoring {
     position: relative;
-    z-index: -2;
+    z-index: 1;
     padding-bottom: 4rem;
 }
 
@@ -357,7 +358,6 @@ footer {
     align-items: flex-end;
     gap: 1rem;
     position: relative;
-    z-index: -4;
     transform: skewY(2deg);
     height: 5rem;
     padding: 1rem;
