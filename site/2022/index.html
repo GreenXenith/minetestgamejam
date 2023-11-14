@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>2022 Minetest GAME JAM</title>
+    <link rel="icon" href="https://raw.githubusercontent.com/minetest/minetest.github.io/master/media/icon.svg">
+
+    <link rel="stylesheet" href="index.css?v=2">
+</head>
+<body>
+    <div id="hero">
+        <div id="date">
+            <p id="begins">See forum for details</p>
+            <p id="countdown">Results are in!</p>
+        </div>
+
+        <script>
+            // Update timestamp
+            function setNext(what, when) {
+                const whenString = !Date.parse(when) ? "" : when.toLocaleString("en-US", {
+                    weekday: "long", year: "numeric", month: "long", day: "numeric", hour: "numeric", hour12: true, minute: "2-digit", timeZoneName: "short"
+                });
+                document.getElementById("begins").innerHTML = `${what} ${whenString}`;
+            }
+
+            function updateTimer(timer, remaining) {
+                const parts = [
+                    Math.floor(remaining / 86400),
+                    Math.floor((remaining % 86400) / 3600),
+                    Math.floor(((remaining % 86400) % 3600) / 60),
+                    Math.floor(((remaining % 86400) % 3600) % 60),
+                ];
+                if (parts[0] == 0) parts.shift();
+
+                timer.innerHTML = parts.map(v => v.toString().padStart(2, "0")).join(":")
+            }
+
+            // window.onload = () => {
+            //     // Dates
+            //     const dates = [
+            //         ["Theme reveal", new Date("2022-11-01T00:00Z")],
+            //         ["Working time ends", new Date("2022-11-21T23:59Z")],
+            //         ["Voting time ends", new Date("2022-11-28T23:59Z")],
+            //         ["Results", "Soon..."],
+            //     ];
+
+            //     // Closest date
+            //     let i = 0;
+            //     let next = dates[0];
+            //     while (next[1] <= Date.now()) {
+            //         next = dates[++i];
+            //     }
+
+            //     setNext(next[0], next[1]);
+
+            //     // Countdown
+            //     const timer = document.getElementById("countdown");
+            //     setInterval(() => {
+            //         if (Date.parse(next[1])) {
+            //             const diff = Math.max(0, (next[1] - Date.now()) / 1000);
+            //             updateTimer(timer, diff);
+
+            //             // Update closest date
+            //             if (diff < 1) {
+            //                 next = dates[++i];
+            //                 setNext(next[0], next[1]);
+            //             }
+            //         } else {
+            //             timer.innerHTML = next[1];
+            //         }
+            //     }, 1000);
+
+            //     if (Date.parse(next[1])) {
+            //         updateTimer(timer, Math.max(0, (next[1] - Date.now()) / 1000));
+            //     } else {
+            //         timer.innerHTML = next[1];
+            //     }
+            // }
+        </script>
+        <img id="background" src="https://raw.githubusercontent.com/GreenXenith/minetestgamejam/master/2022/images/banner.png">
+    </div>
+
+    <p>
+        <a href="https://forum.minetest.net/viewtopic.php?f=18&t=28802" target="_blank" id="cta">
+            View forum topic for rules and details
+        </a>
+    </p>
+
+    <p id="soon"><em>More stuff coming soon...</em></p>
+</body>
+</html>

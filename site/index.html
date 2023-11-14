@@ -5,90 +5,152 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>2022 Minetest GAME JAM</title>
+    <title>2023 Minetest GAME JAM</title>
     <link rel="icon" href="https://raw.githubusercontent.com/minetest/minetest.github.io/master/media/icon.svg">
 
     <link rel="stylesheet" href="index.css?v=2">
 </head>
 <body>
-    <div id="hero">
-        <div id="date">
-            <p id="begins">See forum for details</p>
-            <p id="countdown">Results are in!</p>
+    <div id="page-container">
+        <nav>
+            <ul>
+                <li><a href="#">2023</a></li>
+                <li><a href="#countdown">SCHEDULE</a></li>
+                <li><a href="#rules">RULES</a></li>
+                <li><a href="#scoring">SCORING</a></li>
+                <li><a href="#prizes">$</a></li>
+            </ul>
+            <div>
+                <img src="https://raw.githubusercontent.com/minetest/minetest.github.io/master/media/icon.svg">
+                <h2>Minetest GAME JAM</h2>
+            </div>
+        </nav>
+    
+        <div id="banner">
+            <img src="img/banner_layer_explosion.png">
+            <img src="img/banner_layer_sam.png">
+            <img src="img/banner_layer_words.png">
         </div>
-
-        <script>
-            // Update timestamp
-            function setNext(what, when) {
-                const whenString = !Date.parse(when) ? "" : when.toLocaleString("en-US", {
-                    weekday: "long", year: "numeric", month: "long", day: "numeric", hour: "numeric", hour12: true, minute: "2-digit", timeZoneName: "short"
-                });
-                document.getElementById("begins").innerHTML = `${what} ${whenString}`;
-            }
-
-            function updateTimer(timer, remaining) {
-                const parts = [
-                    Math.floor(remaining / 86400),
-                    Math.floor((remaining % 86400) / 3600),
-                    Math.floor(((remaining % 86400) % 3600) / 60),
-                    Math.floor(((remaining % 86400) % 3600) % 60),
-                ];
-                if (parts[0] == 0) parts.shift();
-
-                timer.innerHTML = parts.map(v => v.toString().padStart(2, "0")).join(":")
-            }
-
-            // window.onload = () => {
-            //     // Dates
-            //     const dates = [
-            //         ["Theme reveal", new Date("2022-11-01T00:00Z")],
-            //         ["Working time ends", new Date("2022-11-21T23:59Z")],
-            //         ["Voting time ends", new Date("2022-11-28T23:59Z")],
-            //         ["Results", "Soon..."],
-            //     ];
-
-            //     // Closest date
-            //     let i = 0;
-            //     let next = dates[0];
-            //     while (next[1] <= Date.now()) {
-            //         next = dates[++i];
-            //     }
-
-            //     setNext(next[0], next[1]);
-
-            //     // Countdown
-            //     const timer = document.getElementById("countdown");
-            //     setInterval(() => {
-            //         if (Date.parse(next[1])) {
-            //             const diff = Math.max(0, (next[1] - Date.now()) / 1000);
-            //             updateTimer(timer, diff);
-
-            //             // Update closest date
-            //             if (diff < 1) {
-            //                 next = dates[++i];
-            //                 setNext(next[0], next[1]);
-            //             }
-            //         } else {
-            //             timer.innerHTML = next[1];
-            //         }
-            //     }, 1000);
-
-            //     if (Date.parse(next[1])) {
-            //         updateTimer(timer, Math.max(0, (next[1] - Date.now()) / 1000));
-            //     } else {
-            //         timer.innerHTML = next[1];
-            //     }
-            // }
-        </script>
-        <img id="background" src="https://raw.githubusercontent.com/GreenXenith/minetestgamejam/master/2022/images/banner.png">
+    
+        <div id="main">
+            <div id="countdown">
+                <div id="timer">
+                    <div id="clock"></div>
+                    <div id="next-event">until jam begins</div>
+                </div>
+            </div>
+            <div id="schedule" class="content">
+                <h1>Schedule</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Event<br></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="date" data-date="2023-12-01T00:00Z">December 1, 2023 @ 00:00 UTC</td>
+                            <td>Theme announcement, development begins</td>
+                        </tr>
+                        <tr>
+                            <td class="date" data-date="2023-12-21T23:59Z">December 21, 2023 @ 23:59 UTC</td>
+                            <td>Development ends, rating begins</td>
+                        </tr>
+                        <tr>
+                            <td class="date" data-date="2023-12-28T23:59Z">December 28, 2023 @ 23:59 UTC</td>
+                            <td>Rating ends</td>
+                        </tr>
+                        <tr>
+                            <td>December 30, 2023</td>
+                            <td>Results tallied and announced<br></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="rules" class="content">
+                <h1>Rules</h1>
+                <ul>
+                    <li>Submit games to ContentDB using the <code>Jam / 2023</code> tag (must comply with <a href="https://content.minetest.net/policy_and_guidance/" target="_blank">ContentDB policies</a>)</li>
+                    <li>All gameplay and code must be original work completed within the development timeframe</li>
+                    <li>Third-party or AI assets and libraries may be used if thoroughly documented and properly licensed
+                    <li>Groups may participate (all member usernames must be included in the <code>Maintainers</code> ContentDB field)</li>
+                    <li>Participants may have multiple submissions</li>
+                    <li>Game mods should use the <code>gamename_modname</code> convention (excluding third-party libraries, which must follow the <a href="https://content.minetest.net/policy_and_guidance/#31-right-to-a-name" target="_blank">Right to a Name policy</a>)</li>
+                </ul>
+            </div>
+            <div id="scoring" class="content">
+                <h1>Scoring</h1>
+                <p>
+                    This year, scoring is <strong>entirely community-driven!</strong> Using an interface on this website (coming soon), anyone with a ContentDB account may log in to participate. This will allow everyone to have a chance to make a game and cast their vote.
+                </p>
+                <h2>How?</h2>
+                <p>
+                    Each reviewer will be presented with a randomly sorted list of all submissions to sort (from favorite to least-favorite). The average rank of each package (minus applicable penalties) determines its final score.<br><br>
+                    Rankings from members who have received <em>10 or more helpful review points</em> on ContentDB (or have the <code>Editor</code> rank or higher) will have an <strong>added 10% weight</strong>. These are sort of like "mini-judges".
+                </p>
+                <h2>Things to Consider</h2>
+                <table id="criteria">
+                    <tbody>
+                        <tr>
+                            <td>Gameplay</td>
+                            <td>How intuitive and enjoyable is the gameplay? Is it a fulfilling experience? Is there a clear goal?</td>
+                        </tr>
+                        <tr>
+                            <td>Innovation</td>
+                            <td>What makes the game unique? Does it have emergent mechanics or clever gameplay?</td>
+                        </tr>
+                        <tr>
+                            <td>Content</td>
+                            <td>Is the game well-polished or packed with stuff to do? Is the art and sound consistent and cohesive?</td>
+                        </tr>
+                        <tr>
+                            <td>Theme</td>
+                            <td>How well does the game utilize the theme(s)? Did it apply the theme(s) in a clever way?</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h2>Penalties</h2>
+                <table id="penalties">
+                    <thead>
+                        <tr>
+                            <th>Penalties</th>
+                            <th>Reduces final score by 20% (additive)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>Complex Installation</code> tag</td>
+                            <td>Game should not require external libraries or mod trust.</td>
+                        </tr>
+                        <tr>
+                            <td>No git repository</td>
+                            <td>Game should use proper source control.</td>
+                        </tr>
+                        <tr>
+                            <td>Non-free media or license</td>
+                            <td>Game should use completely free assets and licenses.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h2 id="prizes">Prizes</h2>
+                <p>
+                    This year's prize pool is <strong>$300USD</strong>, divided amongst the top 3 contestants.<br><br>
+                    Winners will recieve one half ($150), one third ($100), and one sixth ($50) of the prize pool for 1st, 2nd, and 3rd places, respectively. Winners also receive ContentDB front page promotion.<br><br>
+                    Other prizes TBD?
+                </p>
+                <p>For more details, please review the <a href="https://github.com/GreenXenith/minetestgamejam/blob/master/2023/PLANNING.md#scoring" target="_blank">planning document</a>.</p>
+            </div>
+            <footer>
+                <span>&copy; 2022-2023 <a href="https://www.minetest.net/" target="
+                    ">The Minetest Team</a></span>
+                <span>Website by <a href="https://www.greenxenith.com/" target="
+                    ">GreenXenith</a></span>
+            </footer>
+        </div>
     </div>
+   
 
-    <p>
-        <a href="https://forum.minetest.net/viewtopic.php?f=18&t=28802" target="_blank" id="cta">
-            View forum topic for rules and details
-        </a>
-    </p>
-
-    <p id="soon"><em>More stuff coming soon...</em></p>
+    <script src="index.js"></script>
 </body>
 </html>
