@@ -1,6 +1,13 @@
 /* Config */
 :root {
-    --blue: rgb(58, 161, 165);
+    --color-1: rgb(58, 161, 165);
+    --color-2: rgb(27, 187, 139);
+    --color-3: rgb(0, 156, 104);
+    --color-4: rgb(14, 109, 73);
+    --color-5: rgb(6, 83, 51);
+    --color-6: rgb(1, 61, 21);
+
+    --sections: 6;
     --shadow-color: #00000088;
     --section-shadow: 0 2px 8px var(--shadow-color);
 }
@@ -60,7 +67,7 @@
 }
 
 html, body {
-    scrollbar-color: var(--blue) transparent;
+    scrollbar-color: var(--color-1) transparent;
     scroll-behavior: smooth;
     box-sizing: border-box;
     height: 100%; width: 100%;
@@ -68,11 +75,11 @@ html, body {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--blue);
+    background: var(--color-1);
 }
 
 ::-webkit-scrollbar, ::-webkit-scrollbar-track {
-    background: var(--blue);
+    background: var(--color-1);
 }
 
 body {
@@ -96,10 +103,10 @@ nav {
     justify-content: space-between;
     align-items: center;
     position: fixed;
-    z-index: 5;
+    z-index: calc(var(--sections) + 1);
     width: 66%;
     height: 4rem;
-    background-color: var(--blue);
+    background-color: var(--color-1);
     border-bottom: 4px solid rgb(34, 117, 128);
     font-size: 1.5rem;
 }
@@ -115,9 +122,9 @@ nav ul li {
 
 nav ul li a {
     font-weight: bold;
+    color: white;
     text-decoration: none;
     text-shadow: 2px 2px var(--shadow-color);
-    color: white;
 }
 
 nav ul li:hover {
@@ -169,12 +176,8 @@ nav h2 {
 }
 
 /* Main */
-#main {
-    margin-bottom: 2rem;
-}
-
 .content {
-    scroll-margin-top: 3rem;
+    scroll-margin-top: 1rem;
     padding-inline: 12rem;
     display: flex;
     flex-direction: column;
@@ -190,17 +193,113 @@ nav h2 {
     text-shadow: 2px 2px var(--shadow-color);
 }
 
-#countdown {
+.content a, footer a {
+    color: rgb(255, 172, 218);
+}
+
+.content a:hover, footer a:hover {
+    color: rgb(255, 206, 244);
+}
+
+code {
+    padding: 0rem 0.25rem;
+    background-color: #00000033;
+    border-radius: 2px;
+}
+
+strong {
+    font-weight: bold;
+}
+
+#main {
+    margin-bottom: 5rem;
+}
+
+#main > * {
+    margin-block: -2rem;
+    padding-block: 2rem;
+    position: relative;
+    z-index: 3;
+}
+
+#main > *::before {
     box-shadow: var(--section-shadow);
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#main > *:nth-child(2n)::before {
+    transform: skewY(1deg);
+}
+
+#main > *:nth-child(2n-1)::before {
+    transform: skewY(-1deg);
+}
+
+#main > *:nth-child(1) {
+    z-index: calc(var(--sections) - 0);
+}
+
+#main > *:nth-child(2) {
+    z-index: calc(var(--sections) - 1);
+}
+
+#main > *:nth-child(3) {
+    z-index: calc(var(--sections) - 2);
+}
+
+#main > *:nth-child(4) {
+    z-index: calc(var(--sections) - 3);
+}
+
+#main > *:nth-child(5) {
+    z-index: calc(var(--sections) - 4);
+}
+
+#main > *:nth-child(6) {
+    z-index: calc(var(--sections) - 5);
+}
+
+#main > *:nth-child(1)::before {
+    background-color: var(--color-1);
+}
+
+#main > *:nth-child(2)::before {
+    background-color: var(--color-2);
+}
+
+#main > *:nth-child(3)::before {
+    background-color: var(--color-3);
+}
+
+#main > *:nth-child(4)::before {
+    background-color: var(--color-4);
+}
+
+#main > *:nth-child(5)::before {
+    background-color: var(--color-5);
+}
+
+#main > *:nth-child(6)::before {
+    background-color: var(--color-6);
+}
+
+#countdown {
     transform-origin: bottom right;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
-    z-index: 4;
-    transform: skewY(-2deg);
+    transform: skewY(-1deg);
     height: 7rem;
-    background-color: var(--blue);
+}
+
+#countdown::before {
+    transform: skewY(0) !important;
 }
 
 #timer {
@@ -226,16 +325,6 @@ nav h2 {
     text-shadow: 1px 1px var(--shadow-color);
 }
 
-#schedule {
-    box-shadow: var(--section-shadow);
-    transform-origin: bottom right;
-    position: relative;
-    z-index: 3;
-    transform: skewY(-1deg);
-    padding-top: 1rem;
-    background-color: rgb(21, 180, 132);
-}
-
 #schedule table {
     border-spacing: 0.5rem;
 }
@@ -259,54 +348,9 @@ nav h2 {
     background-color: rgb(0, 128, 100);
 }
 
-#rules {
-    box-shadow: var(--section-shadow);
-    position: relative;
-    background-color: rgb(14, 109, 73);
-    z-index: 2;
-}
-
 #rules ul {
     list-style-position: inside;
     list-style-type: square;
-}
-
-.content a, footer a {
-    color: rgb(255, 172, 218);
-}
-
-.content a:hover, footer a:hover {
-    color: rgb(255, 206, 244);
-}
-
-code {
-    padding: 0rem 0.25rem;
-    background-color: #00000033;
-    border-radius: 2px;
-}
-
-strong {
-    font-weight: bold;
-}
-
-#scoring {
-    position: relative;
-    z-index: 1;
-    padding-bottom: 4rem;
-}
-
-#scoring::after {
-    transform-origin: top right;
-    box-shadow: var(--section-shadow);
-    content: "";
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    transform: skewY(1deg);
-    width: 100%;
-    height: 100%;
-    background-color: rgb(6, 83, 51);
 }
 
 #scoring h2 {
@@ -352,18 +396,14 @@ strong {
     margin-top: 2rem;
 }
 
-footer {
-    transform-origin: top right;
-    box-shadow: var(--section-shadow);
-    display: flex;
+#footer {
+    flex-direction: row;
     justify-content: center;
     align-items: flex-end;
     gap: 1rem;
-    position: relative;
-    transform: skewY(2deg);
     height: 5rem;
-    padding: 1rem;
-    background-color: rgb(1, 61, 21);
+    padding-top: 6rem;
+    padding-bottom: 1rem;
 }
 
 @media (max-width: 1000px) {
@@ -385,7 +425,6 @@ footer {
     #banner {
         height: 30%;
         margin-top: 0;
-        margin-bottom: 0;
     }
 
     #page-container {
@@ -406,6 +445,8 @@ footer {
         position: relative;
         top: 0;
         margin-left: unset;
+        text-align: center;
+        width: 100%;
         text-shadow: 1px 1px var(--shadow-color);
     }
 }
