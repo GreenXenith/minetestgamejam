@@ -61,6 +61,7 @@
 
 html, body {
     scrollbar-color: var(--blue) transparent;
+    scroll-behavior: smooth;
     box-sizing: border-box;
     height: 100%; width: 100%;
     margin: 0; padding: 0;
@@ -95,7 +96,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     position: fixed;
-    z-index: 3;
+    z-index: 5;
     width: 66%;
     height: 4rem;
     background-color: var(--blue);
@@ -173,6 +174,7 @@ nav h2 {
 }
 
 .content {
+    scroll-margin-top: 3rem;
     padding-inline: 12rem;
     display: flex;
     flex-direction: column;
