@@ -195,10 +195,12 @@ nav h2 {
 
 .content a, footer a {
     color: rgb(255, 172, 218);
+    text-shadow: 0 0 2px rgb(216, 69, 150);
 }
 
 .content a:hover, footer a:hover {
     color: rgb(255, 206, 244);
+    text-shadow: 0 0 2px rgb(238, 95, 173);
 }
 
 code {
@@ -342,10 +344,11 @@ strong {
     background-color: rgb(0, 146, 114);
     font-weight: bold;
     text-transform: uppercase;
+    text-shadow: 1px 1px var(--shadow-color);
 }
 
 #schedule td {
-    background-color: rgb(0, 128, 100);
+    background-color: rgb(0, 116, 90);
 }
 
 #rules ul {
