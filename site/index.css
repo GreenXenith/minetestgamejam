@@ -194,13 +194,11 @@ nav h2 {
 }
 
 .content a, footer a {
-    color: rgb(255, 172, 218);
-    text-shadow: 0 0 2px rgb(216, 69, 150);
+    color: rgb(255, 169, 147);
 }
 
 .content a:hover, footer a:hover {
-    color: rgb(255, 206, 244);
-    text-shadow: 0 0 2px rgb(238, 95, 173);
+    color: rgb(255, 204, 192);
 }
 
 code {
@@ -369,6 +367,8 @@ strong {
     border-collapse: collapse;
     box-shadow: 3px 3px 4px 1px var(--shadow-color);
     margin-top: 0.5rem;
+    --table-color-1: rgb(25, 143, 94);
+    --table-color-2: rgb(20, 124, 81);
 }
 
 #scoring table tr, #scoring table td, #scoring table th {
@@ -376,22 +376,23 @@ strong {
 }
 
 #scoring table tr:nth-child(odd) td:first-child {
-    border-right: 3px solid rgb(9, 104, 64);
+    border-right: 3px solid var(--table-color-1);
 }
 
 #scoring table tr:nth-child(even) td:first-child, #scoring table th:first-child {
-    border-right: 3px solid rgb(13, 117, 74);
+    border-right: 3px solid var(--table-color-2);
 }
 
 #scoring table tr:nth-child(odd) {
-    background-color: rgb(13, 117, 74);
+    background-color: var(--table-color-2);
 }
 
 #scoring table th, #scoring table tr:nth-child(even) {
-    background-color: rgb(9, 104, 64);
+    background-color: var(--table-color-1);
 }
 
 #criteria td:first-child, #penalties th {
+    text-shadow: 1px 1px var(--shadow-color);
     font-weight: bold;
 }
 
