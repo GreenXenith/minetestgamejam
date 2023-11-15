@@ -16,7 +16,7 @@ function updateTimer(timer, remaining) {
     ];
     if (parts[0] == 0) parts.shift();
 
-    timer.innerHTML = parts.map(v => v.toString().padStart(2, "0")).join(":")
+    timer.innerHTML = `${parts[0]}.` + parts.slice(1, 4).map(v => v.toString().padStart(2, "0")).join(":")
 }
 
 window.addEventListener("load", () => {
