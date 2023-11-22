@@ -412,6 +412,16 @@ strong {
     margin-top: 2rem;
 }
 
+#prizes h2 {
+    margin-top: 2rem;
+    text-transform: uppercase;
+    text-shadow: 2px 2px var(--shadow-color);
+}
+
+#prizes p {
+    margin-top: 1rem;
+}
+
 #footer {
     flex-direction: row;
     justify-content: center;
