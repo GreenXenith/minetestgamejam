@@ -408,8 +408,8 @@ strong {
     font-weight: bold;
 }
 
-#scoring p:last-child {
-    margin-top: 2rem;
+#prizes > p {
+    margin-top: 1rem;
 }
 
 #prizes h2 {
@@ -418,8 +418,28 @@ strong {
     text-shadow: 2px 2px var(--shadow-color);
 }
 
-#prizes p {
+.prize {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: var(--color-4);
     margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 3px 3px 4px 1px var(--shadow-color);
+}
+
+.prize p {
+    font-size: 1.1rem;
+}
+
+.prize sub {
+    font-size: 0.8rem;
+}
+
+.prize img {
+    width: 25%;
 }
 
 #footer {
