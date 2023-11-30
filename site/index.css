@@ -97,7 +97,7 @@ body {
 
 nav {
     box-shadow: var(--section-shadow);
-    padding-inline: 3rem;
+    padding-inline: 2rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -108,7 +108,7 @@ nav {
     height: 4rem;
     background-color: var(--color-1);
     border-bottom: 4px solid rgb(34, 117, 128);
-    font-size: 1.5rem;
+    font-size: 1.25rem;
 }
 
 nav ul {
@@ -449,7 +449,7 @@ strong {
     gap: 1rem;
     height: 5rem;
     padding-top: 6rem;
-    padding-bottom: 1rem;
+    padding-bottom: 1.5rem;
 }
 
 @media (max-width: 1000px) {
