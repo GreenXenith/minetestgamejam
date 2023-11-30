@@ -9,14 +9,13 @@ document.addEventListener("mousemove", event => {
 
 function updateTimer(timer, remaining) {
     const parts = [
-        Math.floor(remaining / 86400),
         Math.floor((remaining % 86400) / 3600),
         Math.floor(((remaining % 86400) % 3600) / 60),
         Math.floor(((remaining % 86400) % 3600) % 60),
+        Math.floor(remaining / 86400),
     ];
-    if (parts[0] == 0) parts.shift();
 
-    timer.innerHTML = `${parts[0]}.` + parts.slice(1, 4).map(v => v.toString().padStart(2, "0")).join(":")
+    timer.innerHTML = (parts[3] > 0 ? `${parts[3]}.` : "") + parts.slice(0, 3).map(v => v.toString().padStart(2, "0")).join(":");
 }
 
 window.addEventListener("load", () => {
