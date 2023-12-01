@@ -46,8 +46,8 @@ window.addEventListener("load", () => {
         next = dates[++i];
     }
 
-    let el_next = document.getElementById("next-event").innerHTML;
-    el_next = next[0];
+    let el_next = document.getElementById("next-event");
+    el_next.innerHTML = next[0];
 
     // Countdown
     const timer = document.getElementById("clock");
@@ -59,7 +59,7 @@ window.addEventListener("load", () => {
             // Update closest date
             if (diff < 1) {
                 next = dates[++i];
-                el_next_event = next[0];
+                el_next.innerHTML = next[0];
             }
         } else {
             timer.innerHTML = next[1];
