@@ -21,7 +21,6 @@ function updateTimer(timer, remaining) {
 window.addEventListener("load", () => {
     // Dates
     const dates = [
-        ["until jam begins", new Date("2023-12-01T00:00Z")],
         ["to work on your games", new Date("2023-12-21T23:59Z")],
         ["to rank submissions", new Date("2023-12-28T23:59Z")],
     ];

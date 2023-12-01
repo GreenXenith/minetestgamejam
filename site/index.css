@@ -1,13 +1,16 @@
 /* Config */
 :root {
-    --color-1: rgb(58, 161, 165);
-    --color-2: rgb(27, 187, 139);
-    --color-3: rgb(0, 156, 104);
-    --color-4: rgb(14, 109, 73);
-    --color-5: rgb(6, 83, 51);
-    --color-6: rgb(1, 61, 21);
+    --color-1: #ffa024;
+    --color-2: rgb(58, 161, 165);
+    --color-3: rgb(27, 187, 139);
+    --color-4: rgb(0, 156, 104);
+    --color-5: rgb(14, 109, 73);
+    --color-6: rgb(6, 83, 51);
+    --color-7: rgb(1, 61, 21);
 
-    --sections: 6;
+    --color-main: var(--color-2);
+
+    --sections: 7;
     --shadow-color: #00000088;
     --section-shadow: 0 2px 8px var(--shadow-color);
 }
@@ -67,7 +70,7 @@
 }
 
 html, body {
-    scrollbar-color: var(--color-1) transparent;
+    scrollbar-color: var(--color-main) transparent;
     scroll-behavior: smooth;
     box-sizing: border-box;
     height: 100%; width: 100%;
@@ -75,11 +78,11 @@ html, body {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--color-1);
+    background: var(--color-main);
 }
 
 ::-webkit-scrollbar, ::-webkit-scrollbar-track {
-    background: var(--color-1);
+    background: var(--color-main);
 }
 
 body {
@@ -106,7 +109,7 @@ nav {
     z-index: calc(var(--sections) + 1);
     width: 66%;
     height: 4rem;
-    background-color: var(--color-1);
+    background-color: var(--color-main);
     border-bottom: 4px solid rgb(34, 117, 128);
     font-size: 1.25rem;
 }
@@ -223,7 +226,36 @@ strong {
     font-weight: bold;
 }
 
+#theme {
+    transform-origin: bottom right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-inline: 3rem;
+}
+
+#theme div, #theme span#word  {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-shadow: 3px 3px var(--shadow-color);
+    text-transform: uppercase;
+}
+
+#theme span#word {
+    font-size: 2.5rem;
+}
+
+#theme > * {
+    transform: skewY(1deg);
+    font-size: 1rem;
+    text-shadow: 1px 1px var(--shadow-color);
+}
+
+
+
 #main {
+    margin-top: 3rem;
     margin-bottom: 5rem;
 }
 
@@ -246,11 +278,11 @@ strong {
 }
 
 #main > *:nth-child(2n)::before {
-    transform: skewY(1deg);
+    transform: skewY(-1deg);
 }
 
 #main > *:nth-child(2n-1)::before {
-    transform: skewY(-1deg);
+    transform: skewY(1deg);
 }
 
 #main > *:nth-child(1) {
@@ -277,6 +309,10 @@ strong {
     z-index: calc(var(--sections) - 5);
 }
 
+#main > *:nth-child(7) {
+    z-index: calc(var(--sections) - 6);
+}
+
 #main > *:nth-child(1)::before {
     background-color: var(--color-1);
 }
@@ -301,17 +337,16 @@ strong {
     background-color: var(--color-6);
 }
 
+#main > *:nth-child(7)::before {
+    background-color: var(--color-7);
+}
+
 #countdown {
+    padding-top: 4rem;
     transform-origin: bottom right;
     display: flex;
     justify-content: center;
     align-items: center;
-    transform: skewY(-1deg);
-    height: 7rem;
-}
-
-#countdown::before {
-    transform: skewY(0) !important;
 }
 
 #timer {
@@ -423,7 +458,7 @@ strong {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    background-color: var(--color-4);
+    background-color: var(--color-5);
     margin-top: 1rem;
     padding: 1rem;
     border-radius: 5px;
