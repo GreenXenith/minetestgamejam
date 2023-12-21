@@ -8,13 +8,19 @@ const OAUTH_URL = `${CDB_URL}/oauth/authorize/?response_type=code&client_id=${OA
 const JAM_TAG = "jam_game_2022"; // TESTING
 
 const status_types = {
-    wait: "&#x1F504;",
-    error: "&#x26D4;",
-    success: "&#x2705;",
+    wait: "&#x1F504; ",
+    error: "&#x26D4; ",
+    success: "&#x2705; ",
+    info: "&#x1f4a1; ",
+    none: "",
+}
+
+const setInfo = (type, message) => {
+    document.getElementById("info").innerHTML = `${status_types[type]}${message}`;
 }
 
 const setStatus = (type, message) => {
-    document.getElementById("status-msg").innerHTML = `${status_types[type]} ${message}`;
+    document.getElementById("status-msg").innerHTML = `${status_types[type]}${message}`;
 };
 
 const postError = (code, message, status) => {
@@ -69,7 +75,7 @@ if (jam_auth_token) {
         localStorage.removeItem("cdb_username");
     });
 
-    setStatus("wait", "Fetching saved list...")
+    setInfo("wait", "Fetching saved list...")
     query_sorted = fetch(`${SERVER_ADDR}/list`, {
         headers: {
             "Authorization": jam_auth_token,
@@ -151,12 +157,12 @@ fetch(`${CDB_URL}/api/packages/?tag=${JAM_TAG}`).then(res => {
                             sorted.push(package_elements[name]);
                         }
                         pkg_list.replaceChildren(...sorted);
-                        setStatus("success", "Loaded saved list.");
+                        setInfo("success", "Loaded saved list.");
 
                         return;
                     }
 
-                    setStatus("success", "No saved list yet. Move a tile to update.");
+                    setInfo("info", "Drag or use arrows to move items.");
                 } else {
                     serverError(res.status, await res.text());
                 }
@@ -192,7 +198,12 @@ const updateList = () => {
         body: JSON.stringify({order: list}),
     }).then(async res => {
         if (res.ok) {
-            setStatus("success", "List updated.");
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = now.getMinutes().toString().padStart(2, "0");
+            const seconds = now.getSeconds().toString().padStart(2, "0");
+            setInfo("success", `List updated ${hours}:${minutes}:${seconds}`);
+            setStatus("none", "");
         } else {
             serverError(res.status, await res.text());
         }
