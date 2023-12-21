@@ -1,5 +1,6 @@
 const config = require("./config.json");
 const CDB_URL = "https://content.minetest.net";
+const JAM_TAG = "jam_game_2022"; // TESTING
 
 // Logging
 const fs = require("fs");
@@ -86,7 +87,7 @@ const try_fetch = (url, options, tries = 5) => new Promise((resolve, reject) => 
 
 let acceptable_length = 0;
 
-try_fetch(`${CDB_URL}/api/packages/?tag=jam_game_2022`).then(async res => {
+try_fetch(`${CDB_URL}/api/packages/?tag=${JAM_TAG}`).then(async res => {
     acceptable_length = (await res.json()).length;
 });
 
