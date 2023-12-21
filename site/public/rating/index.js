@@ -95,16 +95,16 @@ if (jam_auth_token) {
 let package_elements = {};
 
 const randomize_elements = (parent) => {
-    let sorted = Object.values(package_elements);
+    let list = Object.values(package_elements);
 
-    for (let i = sorted.length - 1; i > 0; i--) {
+    for (let i = list.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * i);
-        const k = sorted[i];
-        sorted[i] = sorted[j];
-        sorted[j] = k;
+        const k = list[i];
+        list[i] = list[j];
+        list[j] = k;
     }
 
-    parent.replaceChildren(...sorted)
+    parent.append(...list);
 }
 
 const updateList = () => {
@@ -243,7 +243,6 @@ fetch(`${CDB_URL}/api/packages/?tag=${JAM_TAG}`).then(res => {
                 });
             }
 
-            pkg_list.appendChild(el_pkg);
             package_elements[pkg.name] = el_pkg;
         }
 
@@ -253,13 +252,11 @@ fetch(`${CDB_URL}/api/packages/?tag=${JAM_TAG}`).then(res => {
                 if (query_res.ok) {
                     const list = await query_res.json();
                     if (list.order) {
-                        let sorted = [];
                         for (const name of list.order) {
-                            sorted.push(package_elements[name]);
+                            pkg_list.appendChild(package_elements[name]);
                         }
-                        pkg_list.replaceChildren(...sorted);
-                        setInfo("success", "Loaded saved list.");
 
+                        setInfo("success", "Loaded saved list.");
                         return;
                     }
 
