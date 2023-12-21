@@ -29,7 +29,7 @@ const postError = (code, message, status) => {
 }
 
 const clientError = (code, message) => {
-    postError(code, message, `Client error (${code}). Check console.`);
+    postError(code, message, `Network error (${code}). Check console.`);
 }
 
 const serverError = (code, message) => {
@@ -133,6 +133,8 @@ const updateList = () => {
         } else {
             serverError(res.status, await res.text());
         }
+    }).catch(err => {
+        clientError("err03", err.toString());
     });
 }
 
@@ -220,9 +222,9 @@ fetch(`${CDB_URL}/api/packages/?tag=${JAM_TAG}`).then(res => {
 
         // Sort package tiles if logged in
         if (jam_auth_token) {
-            query_sorted.then(async res => {
-                if (res.ok) {
-                    const list = await res.json();
+            query_sorted.then(async query_res => {
+                if (query_res.ok) {
+                    const list = await query_res.json();
                     if (list.order) {
                         let sorted = [];
                         for (const name of list.order) {
@@ -236,7 +238,7 @@ fetch(`${CDB_URL}/api/packages/?tag=${JAM_TAG}`).then(res => {
 
                     setInfo("info", "Drag or use arrows to move items.");
                 } else {
-                    serverError(res.status, await res.text());
+                    serverError(query_res.status, await query_res.text());
                 }
 
                 // If query failed or no order returned, randomize
@@ -247,7 +249,7 @@ fetch(`${CDB_URL}/api/packages/?tag=${JAM_TAG}`).then(res => {
         }
     });
 }).catch(err => {
-    clientError("err03", err.toString());
+    clientError("err04", err.toString());
 });
 
 // Tile movement handlers
