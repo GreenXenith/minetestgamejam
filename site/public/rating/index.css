@@ -222,6 +222,11 @@ h2 {
     cursor: pointer;
 }
 
+.package:first-child #pkg-ctrls div:first-child, .package:last-child #pkg-ctrls div:last-child {
+    pointer-events: none;
+    filter: saturate(0);
+}
+
 .package.movable #pkg-ctrls div:hover {
     transform: scale(1.1);
     filter: drop-shadow(0px 0px 4px var(--shadow-color));
