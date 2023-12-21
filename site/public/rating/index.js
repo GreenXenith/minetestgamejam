@@ -117,7 +117,7 @@ const updateList = () => {
         list.push(el._pkg_name)
     }
 
-    setStatus("wait", "Updating list...");
+    setStatus("wait", "Saving list...");
     fetch(`${SERVER_ADDR}/list`, {
         method: "POST",
         headers: {
@@ -132,7 +132,7 @@ const updateList = () => {
             const minutes = now.getMinutes().toString().padStart(2, "0");
             const seconds = now.getSeconds().toString().padStart(2, "0");
 
-            setInfo("success", `List updated ${hours}:${minutes}:${seconds}`);
+            setInfo("success", `List saved ${hours}:${minutes}:${seconds}`);
             setStatus("none", "");
         } else {
             serverError(res.status, await res.text());
