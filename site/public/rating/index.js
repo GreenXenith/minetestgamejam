@@ -137,23 +137,29 @@ const updateList = () => {
 }
 
 const moveUp = (e) => {
-    const el_pkg = e.target.parentNode.parentNode;
-    if (el_pkg.previousSibling) {
-        el_pkg.previousSibling.before(el_pkg);
-    }
-    e.preventDefault();
+    if (jam_auth_token) {
+        const el_pkg = e.target.parentNode.parentNode;
+        if (el_pkg.previousSibling) {
+            el_pkg.previousSibling.before(el_pkg);
+        }
+    
+        updateList();
+    };
 
-    updateList();
+    e.preventDefault();
 };
 
 const moveDown = (e) => {
-    const el_pkg = e.target.parentNode.parentNode;
-    if (el_pkg.nextSibling) {
-        el_pkg.nextSibling.after(el_pkg);
+    if (jam_auth_token) {
+        const el_pkg = e.target.parentNode.parentNode;
+        if (el_pkg.nextSibling) {
+            el_pkg.nextSibling.after(el_pkg);
+        }
+    
+        updateList();
     }
-    e.preventDefault();
 
-    updateList();
+    e.preventDefault();
 };
 
 fetch(`${CDB_URL}/api/packages/?tag=${JAM_TAG}`).then(res => {
