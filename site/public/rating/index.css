@@ -1,0 +1,218 @@
+/* Config */
+:root {
+    --color-main: rgb(58, 161, 165);
+    --color-secondary: rgb(94, 158, 137);
+
+    --shadow-color: #00000088;
+    --section-shadow: 0 2px 8px var(--shadow-color);
+
+    --content-width: 40rem;
+    --max-content-width: 90%;
+}
+
+/* Fonts */
+@font-face {
+    src: url("../fonts/NotoSans-Regular.ttf");
+    font-family: "Noto Sans";
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    src: url("../fonts/NotoSans-Italic.ttf");
+    font-family: "Noto Sans";
+    font-style: italic;
+    font-weight: 400;
+}
+
+@font-face {
+    src: url("../fonts/NotoSans-Light.ttf");
+    font-family: "Noto Sans";
+    font-style: normal;
+    font-weight: 300;
+}
+
+@font-face {
+    src: url("../fonts/NotoSans-LightItalic.ttf");
+    font-family: "Noto Sans";
+    font-style: italic;
+    font-weight: 300;
+}
+
+@font-face {
+    src: url("../fonts/NotoSans-Bold.ttf");
+    font-family: "Noto Sans";
+    font-style: normal;
+    font-weight: 700;
+}
+
+@font-face {
+    src: url("../fonts/NotoSans-BoldItalic.ttf");
+    font-family: "Noto Sans";
+    font-style: italic;
+    font-weight: 700;
+}
+
+/* General */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: "Noto Sans", Times, sans-serif;
+    font-weight: normal;
+    color: #ffffff;
+}
+
+html, body {
+    scrollbar-color: var(--color-main) transparent;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    margin: 0; padding: 0;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-main);
+}
+
+::-webkit-scrollbar, ::-webkit-scrollbar-track {
+    background: var(--color-main);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: radial-gradient(circle, #a9d1c1, #2d4b47 70%);
+    background-attachment: fixed;
+}
+
+.hidden {
+    display: none;
+}
+
+nav {
+    box-shadow: var(--section-shadow);
+    padding-inline: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    z-index: calc(var(--sections) + 1);
+    width: var(--content-width);
+    max-width: var(--max-content-width);
+    height: 4rem;
+    background-color: var(--color-main);
+    border-bottom: 4px solid rgb(34, 117, 128);
+    font-size: 1.25rem;
+}
+
+nav a {
+    filter: drop-shadow(2px 2px var(--shadow-color));
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: inherit;
+    font-weight: bold;
+    padding: 0.2rem;
+}
+
+nav a:hover {
+    transform: translateX(-2px) translateY(-2px);
+    filter: drop-shadow(4px 4px 1px var(--shadow-color));
+}
+
+nav img {
+    display: inline;
+    height: 2rem;
+    margin-right: 0.5rem;
+}
+
+#status {
+    box-shadow: var(--section-shadow);
+    font-size: 1rem;
+    width: var(--content-width);
+    max-width: var(--max-content-width);
+    text-align: center;
+    background-color: rgb(36, 120, 122);
+    border-bottom: 4px solid rgb(13, 84, 87);
+    padding: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+#status span {
+    margin-inline: 0.25rem;
+}
+
+h2 {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+#packages {
+    position: relative;
+    width: var(--content-width);
+    max-width: var(--max-content-width);
+    margin: 1rem;
+}
+
+.package {
+    position: relative;
+    background-color: var(--color-secondary);
+    margin: 1rem;
+    border-radius: 3px;
+    display: flex;
+    overflow: hidden;
+    box-shadow: 0 0 8px #00000088;
+    user-select: none;
+}
+
+.package > * {
+    pointer-events: none;
+}
+
+.package div {
+    width: 100%;
+    padding: 0.5rem 1rem;
+}
+
+.package div h1 {
+    font-size: 1.2rem;
+    border-bottom: 1px white solid;
+    margin-bottom: 0.25rem;
+}
+
+.package img {
+    object-fit: cover;
+    width: 30%;
+}
+
+.package:hover {
+    box-shadow: 0 0 12px #00000088;
+    cursor: grab;
+}
+
+.package.moving {
+    z-index: 2;
+    cursor: grabbing;
+    transform: scale(1.1);
+    box-shadow: 0 0 8px #00000044;
+}
+
+footer {
+    margin-top: 3rem;
+    width: var(--content-width);
+    max-width: var(--max-content-width);
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+footer a {
+    color: rgb(255, 169, 147);
+}
+
+footer a:hover {
+    color: rgb(255, 204, 192);
+}

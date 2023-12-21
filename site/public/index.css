@@ -119,38 +119,31 @@ nav ul {
     list-style-type: none;
 }
 
-nav ul li {
-    margin-right: 1rem;
-}
-
-nav ul li a {
+nav ul li a, nav a {
+    padding: 0.25rem 0.5rem;
     font-weight: bold;
     color: white;
     text-decoration: none;
-    text-shadow: 2px 2px var(--shadow-color);
-}
-
-nav ul li:hover {
-    transform: translateX(-2px) translateY(-2px);
-}
-
-nav ul li:hover a {
-    text-shadow: 4px 4px 1px var(--shadow-color);
-}
-
-nav div {
     filter: drop-shadow(2px 2px var(--shadow-color));
+}
+
+nav ul li:hover a, nav a:hover {
+    transform: translateX(-2px) translateY(-2px);
+    filter: drop-shadow(4px 4px 1px var(--shadow-color));
+}
+
+nav a {
     display: flex;
     align-items: center;
 }
 
-nav img {
+nav a img {
     display: inline;
     height: 2rem;
     margin-right: 0.5rem;
 }
 
-nav h2 {
+nav a h2 {
     font-size: inherit;
     font-weight: bold;
     text-transform: uppercase;
