@@ -344,7 +344,7 @@ document.body.addEventListener("mousemove", e => {
     }
 });
 
-document.body.addEventListener("mouseup", () => {
+const drop_handler = () => {
     if (move_target && jam_auth_token) {
         move_target.classList.remove("moving");
         move_target.removeAttribute("style");
@@ -355,7 +355,10 @@ document.body.addEventListener("mouseup", () => {
             moved = false;
         }
     }
-});
+}
+
+document.body.addEventListener("mouseup", drop_handler);
+document.body.addEventListener("mouseleave", drop_handler);
 
 // const doScroll = () => {
 //     const zone = mouseY / window.innerHeight;
