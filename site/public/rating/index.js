@@ -58,6 +58,7 @@ if (params.has("code")) {
 
 // Modify elements if logged in
 const jam_auth_token = localStorage.getItem("jam_auth_token");
+const cdb_username = localStorage.getItem("cdb_username");
 let query_sorted;
 
 if (jam_auth_token) {
@@ -74,6 +75,9 @@ if (jam_auth_token) {
         localStorage.removeItem("jam_auth_token");
         localStorage.removeItem("cdb_username");
     });
+
+    document.getElementById("header-most").innerHTML = "&#x1F44D;&#xFE0F; Most Favorite";
+    document.getElementById("header-least").classList.remove("hidden");
 
     setInfo("wait", "Fetching saved list...")
     query_sorted = fetch(`${SERVER_ADDR}/list`, {
@@ -208,21 +212,27 @@ fetch(`${CDB_URL}/api/packages/?tag=${JAM_TAG}`).then(res => {
             el_desc.innerText = pkg.short_description;
             el_info.appendChild(el_desc);
 
-            const el_up = document.createElement("div");
-            el_up.innerHTML = "&#x1F53C;&#xFE0F;";
-            el_up.addEventListener("click", moveUp);
-
-            const el_down = document.createElement("div");
-            el_down.innerHTML = "&#x1F53D;&#xFE0F;";
-            el_down.addEventListener("click", moveDown);
-
-            const el_ctrl = document.createElement("div");
-            el_ctrl.id = "pkg-ctrls";
-            el_ctrl.appendChild(el_up);
-            el_ctrl.appendChild(el_down);
-            el_pkg.appendChild(el_ctrl);
+            if (!jam_auth_token || pkg.author == cdb_username) {
+                el_pkg.classList.add("disabled");
+            }
 
             if (jam_auth_token) {
+                // Only add controls if logged in
+                const el_up = document.createElement("div");
+                el_up.innerHTML = "&#x1F53C;&#xFE0F;";
+                el_up.addEventListener("click", moveUp);
+
+                const el_down = document.createElement("div");
+                el_down.innerHTML = "&#x1F53D;&#xFE0F;";
+                el_down.addEventListener("click", moveDown);
+
+                const el_ctrl = document.createElement("div");
+                el_ctrl.id = "pkg-ctrls";
+                el_ctrl.appendChild(el_up);
+                el_ctrl.appendChild(el_down);
+                el_pkg.appendChild(el_ctrl);
+
+                // Only allow movement if logged in
                 el_pkg.classList.add("movable");
                 el_pkg.addEventListener("mousedown", e => {
                     if (e.target.classList.contains("movable")) {

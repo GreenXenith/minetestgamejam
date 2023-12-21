@@ -147,6 +147,7 @@ nav img {
 h2 {
     text-transform: uppercase;
     font-weight: bold;
+    text-shadow: 2px 2px 0px var(--shadow-color);
 }
 
 #packages {
@@ -222,6 +223,10 @@ h2 {
     cursor: grabbing;
     transform: scale(1.1);
     box-shadow: 0 0 8px #00000044;
+}
+
+.package.disabled {
+    filter: saturate(0.25);
 }
 
 footer {
