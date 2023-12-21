@@ -219,7 +219,8 @@ fetch(`${CDB_URL}/api/packages/?tag=${JAM_TAG}`).then(res => {
             el_desc.innerText = pkg.short_description;
             el_info.appendChild(el_desc);
 
-            if (!jam_auth_token || pkg.author == cdb_username) {
+            const own_package = pkg.author == cdb_username; // NEED TO CHECK MAINTAINERS
+            if (!jam_auth_token || own_package) {
                 el_pkg.classList.add("disabled");
             }
 
@@ -239,7 +240,7 @@ fetch(`${CDB_URL}/api/packages/?tag=${JAM_TAG}`).then(res => {
                 el_ctrl.appendChild(el_down);
                 el_pkg.appendChild(el_ctrl);
 
-                if (pkg.author == cdb_username) {
+                if (own_package) {
                     el_pkg.setAttribute("title", "Your package will not count towards your own list.");
                 }
 
