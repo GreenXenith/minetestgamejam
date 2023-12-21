@@ -8,6 +8,9 @@
     --color-6: rgb(6, 83, 51);
     --color-7: rgb(1, 61, 21);
 
+    --color-link: rgb(255, 169, 147);
+    --color-link-hover: rgb(255, 204, 192);
+
     --color-main: var(--color-2);
 
     --sections: 7;
@@ -127,6 +130,10 @@ nav ul li a, nav a {
     filter: drop-shadow(2px 2px var(--shadow-color));
 }
 
+nav ul li a.important {
+    color: var(--color-1);
+}
+
 nav ul li:hover a, nav a:hover {
     transform: translateX(-2px) translateY(-2px);
     filter: drop-shadow(4px 4px 1px var(--shadow-color));
@@ -202,11 +209,11 @@ nav a h2 {
 }
 
 .content a, footer a {
-    color: rgb(255, 169, 147);
+    color: var(--color-link);
 }
 
 .content a:hover, footer a:hover {
-    color: rgb(255, 204, 192);
+    color: var(--color-link-hover);
 }
 
 code {
@@ -244,8 +251,6 @@ strong {
     font-size: 1rem;
     text-shadow: 1px 1px var(--shadow-color);
 }
-
-
 
 #main {
     margin-top: 3rem;
@@ -363,6 +368,15 @@ strong {
     font-weight: 600;
     text-transform: uppercase;
     text-shadow: 1px 1px var(--shadow-color);
+}
+
+#timer #next-event a {
+    color: var(--color-link);
+    font-weight: bold;
+}
+
+#timer #next-event a:hover {
+    color: var(--color-link-hover);
 }
 
 #schedule table {

@@ -5,7 +5,7 @@ const CDB_URL = "https://content.minetest.net";
 const RATING_URL = `${location.protocol}//${location.host}/rating/`;
 const OAUTH_CLIENT_ID = config.oauth_client_id;
 const OAUTH_URL = `${CDB_URL}/oauth/authorize/?response_type=code&client_id=${OAUTH_CLIENT_ID}&redirect_uri=${encodeURIComponent(RATING_URL)}`;
-const JAM_TAG = "jam_game_2022"; // TESTING
+const JAM_TAG = "jam_game_2023";
 
 const status_types = {
     wait: "&#x1F504;",

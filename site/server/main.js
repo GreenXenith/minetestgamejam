@@ -1,6 +1,6 @@
 const config = require("./config.json");
 const CDB_URL = "https://content.minetest.net";
-const JAM_TAG = "jam_game_2022"; // TESTING
+const JAM_TAG = "jam_game_2023";
 
 // Logging
 const fs = require("fs");
