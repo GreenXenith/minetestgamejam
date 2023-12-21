@@ -5,9 +5,24 @@ const JAM_TAG = "jam_game_2022"; // TESTING
 // Logging
 const fs = require("fs");
 
+const log_msg = (message) => {
+    const now = new Date();
+    const hours = now.getHours();
+    const minutes = now.getMinutes().toString().padStart(2, "0");
+    const seconds = now.getSeconds().toString().padStart(2, "0");
+
+    const stamped_msg = `[${hours}:${minutes}:${seconds}]: ${message}\n\n`;
+    fs.appendFile("log.txt", stamped_msg, () => {});
+
+    return stamped_msg;
+}
+
 const log_error = (message) => {
     const eid = "0x" + (new Date().getTime()).toString(16);
-    fs.appendFile("error_log.txt", `${eid}: ${message}\n\n`, () => {});
+    const stamped = log_msg(`Error ${eid}: ${message}`);
+
+    fs.appendFile("error_log.txt", stamped, () => {});
+
     return eid;
 }
 
@@ -58,6 +73,10 @@ app.use(require("cors")({exposedHeaders: ["Authorization"]}));
 app.use(require("express-rate-limit").rateLimit({
     limit: config.rate.limit,
     windowMs: config.rate.window * 60 * 1000,
+    handler: (req, res, _next, options) => {
+        log_msg(`Ratelimit exceeded by ${req.ip}`);
+        res.status(options.statusCode).send(options.message);
+    },
 }));
 app.use((req, res, next) => {
     if (req.path != "/auth") {
@@ -66,8 +85,10 @@ app.use((req, res, next) => {
         try {
             const decoded = jwt.decode(req.headers.authorization, jwt_secret);
             req.username = decoded.name;
+
             return next();
         } catch(err) {
+            log_msg(`Bad token from ${req.ip}`);
             res.status(401).send("bad token");
         }
     }
@@ -123,12 +144,14 @@ app.get("/auth", (req, res) => {
                     const token = jwt.encode({name: body.username}, jwt_secret);
                     res.status(200).json({ok: true, token: token, username: body.username});
                 } else {
+                    log_msg(`OAuth validation failed from ${req.ip}`);
                     res.status(502).send(`oauth validation failed`);
                 }
             }).catch(err => {
                 server_error(res, "whoami fetch failed", err)
             });
         } else {
+            log_msg(`OAuth failed from ${req.ip} (${body.error})`);
             res.status(502).send(`oauth failed (${body.error})`);
         }
     }).catch(err => {
@@ -146,6 +169,7 @@ app.post("/list", (req, res) => {
     const list = req.body.order;
 
     if (list.length != acceptable_length) {
+        log_msg(`Bad list length from ${req.ip} ([${list.toString()}])`);
         return res.status(400).send("bad length");
     }
 
@@ -165,5 +189,6 @@ app.post("/list", (req, res) => {
 });
 
 app.listen(config.port, () => {
+    log_msg(`Server started on ${config.port}`);
     console.log(`Server listening on port ${config.port}`)
 });
