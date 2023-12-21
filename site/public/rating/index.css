@@ -2,6 +2,8 @@
 :root {
     --color-main: rgb(58, 161, 165);
     --color-secondary: rgb(94, 158, 137);
+    --color-link: rgb(255, 169, 147);
+    --color-link-hover: rgb(255, 204, 192);
 
     --shadow-color: #00000088;
     --section-shadow: 0 2px 8px var(--shadow-color);
@@ -186,6 +188,17 @@ h2 {
     font-size: 1.2rem;
     border-bottom: 1px white solid;
     margin-bottom: 0.25rem;
+}
+
+.package #pkg-info h1 a {
+    font-size: 0.8rem;
+    margin-left: 0.25rem;
+    color: var(--color-link);
+    pointer-events: all;
+}
+
+.package #pkg-info h1 a:hover {
+    color: var(--color-link-hover);
 }
 
 .package #pkg-ctrls {

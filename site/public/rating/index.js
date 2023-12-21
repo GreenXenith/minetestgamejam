@@ -209,6 +209,12 @@ fetch(`${CDB_URL}/api/packages/?tag=${JAM_TAG}`).then(res => {
             el_title.innerText = pkg.title;
             el_info.appendChild(el_title);
 
+            const el_link = document.createElement("a");
+            el_link.setAttribute("href", `${CDB_URL}/packages/${pkg.author}/${pkg.name}/`);
+            el_link.setAttribute("target", "_blank");
+            el_link.innerHTML = "(ContentDB&#x1F855;&#xFE0E)";
+            el_title.appendChild(el_link);
+
             const el_desc = document.createElement("p");
             el_desc.innerText = pkg.short_description;
             el_info.appendChild(el_desc);
