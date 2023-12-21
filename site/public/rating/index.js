@@ -1,4 +1,4 @@
-const SERVER_ADDR = "http://contabo.greenxenith.com:35000";
+const SERVER_ADDR = "https://contabo.greenxenith.com";
 const CDB_URL = "https://content.minetest.net";
 const RATING_URL = `${location.protocol}//${location.host}/rating/`;
 const OAUTH_CLIENT_ID = "ec984104ccdddfcee223e2b4";
