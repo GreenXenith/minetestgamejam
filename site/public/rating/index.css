@@ -187,7 +187,7 @@ h2 {
     width: 30%;
 }
 
-.package:hover {
+.package.movable:hover {
     box-shadow: 0 0 12px #00000088;
     cursor: grab;
 }

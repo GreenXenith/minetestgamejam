@@ -114,11 +114,15 @@ fetch(`${CDB_URL}/api/packages/?tag=${JAM_TAG}`).then(res => {
             el_desc.innerText = pkg.short_description;
             el_info.appendChild(el_desc);
 
-            el_pkg.addEventListener("mousedown", e => {
-                move_target = e.target;
-                move_target.origin = e.clientY;
-                move_target.classList.add("moving");
-            });
+            if (jam_auth_token) {
+                el_pkg.classList.add("movable");
+
+                el_pkg.addEventListener("mousedown", e => {
+                    move_target = e.target;
+                    move_target.origin = e.clientY;
+                    move_target.classList.add("moving");
+                });
+            }
 
             pkg_list.appendChild(el_pkg);
             package_elements[pkg.name] = el_pkg;
@@ -228,12 +232,14 @@ const moveElement = () => {
 }
 
 document.body.addEventListener("mousemove", e => {
-    mouseY = e.clientY;
-    moveElement();
+    if (jam_auth_token) {
+        mouseY = e.clientY;
+        moveElement();
+    }
 });
 
 document.body.addEventListener("mouseup", () => {
-    if (move_target) {
+    if (move_target && jam_auth_token) {
         move_target.classList.remove("moving");
         move_target.removeAttribute("style");
         move_target = null;
