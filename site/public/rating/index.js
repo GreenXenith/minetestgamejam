@@ -3,7 +3,6 @@ const CDB_URL = "https://content.minetest.net";
 const RATING_URL = `${location.protocol}//${location.host}/rating/`;
 const OAUTH_CLIENT_ID = "ec984104ccdddfcee223e2b4";
 const OAUTH_URL = `${CDB_URL}/oauth/authorize/?response_type=code&client_id=${OAUTH_CLIENT_ID}&redirect_uri=${encodeURIComponent(RATING_URL)}`;
-const RATELIMIT_MSG = "Ratelimit exceeded (wait 5 minutes)";
 const JAM_TAG = "jam_game_2022"; // TESTING
 
 const status_types = {
@@ -15,6 +14,19 @@ const status_types = {
 const setStatus = (type, message) => {
     document.getElementById("status-msg").innerHTML = `${status_types[type]} ${message}`;
 };
+
+const postError = (code, message, status) => {
+    console.error(`Error ${code}: ${message}`);
+    setStatus("error", status);
+}
+
+const clientError = (code, message) => {
+    postError(code, message, `Client error (${code}). Check console.`);
+}
+
+const serverError = (code, message) => {
+    postError(code, message, `Server error (${code}). Check console.`);
+}
 
 // Check for authentication request
 const params = new URLSearchParams(window.location.search);
@@ -29,11 +41,10 @@ if (params.has("code")) {
                 }
             });
         } else {
-            setStatus("error", res.status == 429 ? RATELIMIT_MSG : await res.text());
+            serverError(res.status, await res.text());
         }
     }).catch(err => {
-        console.error(err);
-        setStatus("error", "Fetch error (err01). Please check console.");
+        clientError("err01", err.toString());
     });
 }
 
@@ -62,8 +73,7 @@ if (jam_auth_token) {
             "Authorization": jam_auth_token,
         }
     }).catch(err => {
-        console.error(err);
-        setStatus("error", "Fetch error (err02). Please check console.");
+        clientError("err02", err.toString());
     });
 } else {
     document.getElementById("login").setAttribute("href", OAUTH_URL);
@@ -146,7 +156,7 @@ fetch(`${CDB_URL}/api/packages/?tag=${JAM_TAG}`).then(res => {
 
                     setStatus("success", "No saved list yet. Move a tile to update.");
                 } else {
-                    setStatus("error", res.status == 429 ? RATELIMIT_MSG : await res.text());
+                    serverError(res.status, await res.text());
                 }
 
                 // If query failed or no order returned, randomize
@@ -157,8 +167,7 @@ fetch(`${CDB_URL}/api/packages/?tag=${JAM_TAG}`).then(res => {
         }
     });
 }).catch(err => {
-    console.error(err);
-    setStatus("error", "Fetch error (err03). Please check console.");
+    clientError("err03", err.toString());
 });
 
 const updateList = () => {
@@ -183,7 +192,7 @@ const updateList = () => {
         if (res.ok) {
             setStatus("success", "List updated.");
         } else {
-            setStatus("error", res.status == 429 ? RATELIMIT_MSG : await res.text());
+            serverError(res.status, await res.text());
         }
     });
 }
