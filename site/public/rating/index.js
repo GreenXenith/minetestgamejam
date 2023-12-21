@@ -1,7 +1,9 @@
-const SERVER_ADDR = "https://contabo.greenxenith.com";
+import {config} from "./config.js";
+
+const SERVER_ADDR = config.server_address;
 const CDB_URL = "https://content.minetest.net";
 const RATING_URL = `${location.protocol}//${location.host}/rating/`;
-const OAUTH_CLIENT_ID = "ec984104ccdddfcee223e2b4";
+const OAUTH_CLIENT_ID = config.oauth_client_id;
 const OAUTH_URL = `${CDB_URL}/oauth/authorize/?response_type=code&client_id=${OAUTH_CLIENT_ID}&redirect_uri=${encodeURIComponent(RATING_URL)}`;
 const JAM_TAG = "jam_game_2022"; // TESTING
 
