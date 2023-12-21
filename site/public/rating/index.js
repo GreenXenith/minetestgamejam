@@ -16,11 +16,11 @@ const status_types = {
 }
 
 const setInfo = (type, message) => {
-    document.getElementById("info").innerHTML = `${status_types[type]}${message}`;
+    document.getElementById("info").innerHTML = `${status_types[type]}&#xFE0F;${message}`;
 }
 
 const setStatus = (type, message) => {
-    document.getElementById("status-msg").innerHTML = `${status_types[type]}${message}`;
+    document.getElementById("status-msg").innerHTML = `${status_types[type]}&#xFE0F;${message}`;
 };
 
 const postError = (code, message, status) => {
