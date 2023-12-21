@@ -8,19 +8,20 @@ const OAUTH_URL = `${CDB_URL}/oauth/authorize/?response_type=code&client_id=${OA
 const JAM_TAG = "jam_game_2022"; // TESTING
 
 const status_types = {
-    wait: "&#x1F504; ",
-    error: "&#x26D4; ",
-    success: "&#x2705; ",
-    info: "&#x1f4a1; ",
+    wait: "&#x1F504;",
+    error: "&#x26D4;",
+    warning: "&#x26A0;",
+    success: "&#x2705;",
+    info: "&#x1f4a1;",
     none: "",
 }
 
 const setInfo = (type, message) => {
-    document.getElementById("info").innerHTML = `${status_types[type]}&#xFE0F;${message}`;
+    document.getElementById("info").innerHTML = `${status_types[type]}&#xFE0F; ${message}`;
 }
 
 const setStatus = (type, message) => {
-    document.getElementById("status-msg").innerHTML = `${status_types[type]}&#xFE0F;${message}`;
+    document.getElementById("status-msg").innerHTML = `${status_types[type]}&#xFE0F; ${message}`;
 };
 
 const postError = (code, message, status) => {
@@ -252,20 +253,24 @@ fetch(`${CDB_URL}/api/packages/?tag=${JAM_TAG}`).then(res => {
                 if (query_res.ok) {
                     const list = await query_res.json();
                     if (list.order) {
-                        for (const name of list.order) {
-                            pkg_list.appendChild(package_elements[name]);
+                        if (list.order.join(",").length == Object.keys(package_elements).join(",").length) {
+                            for (const name of list.order) {
+                                pkg_list.appendChild(package_elements[name]);
+                            }
+    
+                            setInfo("success", "Loaded saved list.");
+                            return;
+                        } else {
+                            setInfo("warning", "Saved list is outdated. Please sort again.");
                         }
-
-                        setInfo("success", "Loaded saved list.");
-                        return;
+                    } else {
+                        setInfo("info", "Drag or use arrows to move items.");
                     }
-
-                    setInfo("info", "Drag or use arrows to move items.");
                 } else {
                     serverError(query_res.status, await query_res.text());
                 }
 
-                // If query failed or no order returned, randomize
+                // If query failed, no order returned, or outdated list: randomize
                 randomize_elements(pkg_list);
             });
         } else {
