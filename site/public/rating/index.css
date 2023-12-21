@@ -233,10 +233,13 @@ footer {
     margin-top: 3rem;
     width: var(--content-width);
     max-width: var(--max-content-width);
+    margin-bottom: 2rem;
+}
+
+footer div {
     display: flex;
     gap: 1rem;
     justify-content: center;
-    margin-bottom: 2rem;
 }
 
 footer a {
@@ -245,4 +248,10 @@ footer a {
 
 footer a:hover {
     color: rgb(255, 204, 192);
+}
+
+footer p {
+    font-size: 0.8rem;
+    text-align: center;
+    margin-top: 0.5rem;
 }
