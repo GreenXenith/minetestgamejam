@@ -171,20 +171,45 @@ h2 {
     pointer-events: none;
 }
 
-.package div {
-    width: 100%;
-    padding: 0.5rem 1rem;
-}
-
-.package div h1 {
-    font-size: 1.2rem;
-    border-bottom: 1px white solid;
-    margin-bottom: 0.25rem;
+.package #pkg-ctrls div {
+    pointer-events: all;
+    cursor: pointer;
 }
 
 .package img {
     object-fit: cover;
     width: 30%;
+}
+
+.package #pkg-info {
+    width: 100%;
+    padding: 0.5rem 1rem;
+}
+
+.package #pkg-info h1 {
+    font-size: 1.2rem;
+    border-bottom: 1px white solid;
+    margin-bottom: 0.25rem;
+}
+
+.package #pkg-ctrls {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 2rem;
+    line-height: 2rem;
+    min-height: 100%;
+    margin: 0.5rem 0.5rem;
+    margin-left: 0;
+}
+
+.package #pkg-ctrls div {
+    padding: 0.25rem;
+}
+
+.package #pkg-ctrls div:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0px 0px 4px var(--shadow-color));
 }
 
 .package.movable:hover {

@@ -103,6 +103,59 @@ const randomize_elements = (parent) => {
     parent.replaceChildren(...sorted)
 }
 
+const updateList = () => {
+    if (!jam_auth_token) return;
+
+    const children = Array.from(document.getElementById("packages").children)
+    let list = [];
+
+    for (const el of children) {
+        list.push(el._pkg_name)
+    }
+
+    setStatus("wait", "Updating list...");
+    fetch(`${SERVER_ADDR}/list`, {
+        method: "POST",
+        headers: {
+            "Authorization": localStorage.getItem("jam_auth_token") || "",
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({order: list}),
+    }).then(async res => {
+        if (res.ok) {
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = now.getMinutes().toString().padStart(2, "0");
+            const seconds = now.getSeconds().toString().padStart(2, "0");
+
+            setInfo("success", `List updated ${hours}:${minutes}:${seconds}`);
+            setStatus("none", "");
+        } else {
+            serverError(res.status, await res.text());
+        }
+    });
+}
+
+const moveUp = (e) => {
+    const el_pkg = e.target.parentNode.parentNode;
+    if (el_pkg.previousSibling) {
+        el_pkg.previousSibling.before(el_pkg);
+    }
+    e.preventDefault();
+
+    updateList();
+};
+
+const moveDown = (e) => {
+    const el_pkg = e.target.parentNode.parentNode;
+    if (el_pkg.nextSibling) {
+        el_pkg.nextSibling.after(el_pkg);
+    }
+    e.preventDefault();
+
+    updateList();
+};
+
 fetch(`${CDB_URL}/api/packages/?tag=${JAM_TAG}`).then(res => {
     res.text().then(text => {
         // Add package tiles
@@ -114,7 +167,6 @@ fetch(`${CDB_URL}/api/packages/?tag=${JAM_TAG}`).then(res => {
 
             const el_pkg = document.createElement("div");
             el_pkg.classList.add("package");
-            el_pkg.classList.add(`pkg_${idx}`);
             el_pkg._pkg_name = pkg.name;
 
             const el_img = document.createElement("img");
@@ -122,6 +174,7 @@ fetch(`${CDB_URL}/api/packages/?tag=${JAM_TAG}`).then(res => {
             el_pkg.appendChild(el_img);
 
             const el_info = document.createElement("div");
+            el_info.id = "pkg-info";
             el_pkg.appendChild(el_info);
 
             const el_title = document.createElement("h1");
@@ -132,13 +185,28 @@ fetch(`${CDB_URL}/api/packages/?tag=${JAM_TAG}`).then(res => {
             el_desc.innerText = pkg.short_description;
             el_info.appendChild(el_desc);
 
+            const el_up = document.createElement("div");
+            el_up.innerHTML = "&#x1F53C;&#xFE0F;";
+            el_up.addEventListener("click", moveUp);
+
+            const el_down = document.createElement("div");
+            el_down.innerHTML = "&#x1F53D;&#xFE0F;";
+            el_down.addEventListener("click", moveDown);
+
+            const el_ctrl = document.createElement("div");
+            el_ctrl.id = "pkg-ctrls";
+            el_ctrl.appendChild(el_up);
+            el_ctrl.appendChild(el_down);
+            el_pkg.appendChild(el_ctrl);
+
             if (jam_auth_token) {
                 el_pkg.classList.add("movable");
-
                 el_pkg.addEventListener("mousedown", e => {
-                    move_target = e.target;
-                    move_target.origin = e.clientY;
-                    move_target.classList.add("moving");
+                    if (e.target.classList.contains("movable")) {
+                        move_target = e.target;
+                        move_target.origin = e.clientY;
+                        move_target.classList.add("moving");
+                    }
                 });
             }
 
@@ -177,38 +245,6 @@ fetch(`${CDB_URL}/api/packages/?tag=${JAM_TAG}`).then(res => {
 }).catch(err => {
     clientError("err03", err.toString());
 });
-
-const updateList = () => {
-    if (!jam_auth_token) return;
-
-    const children = Array.from(document.getElementById("packages").children)
-    let list = [];
-
-    for (const el of children) {
-        list.push(el._pkg_name)
-    }
-
-    setStatus("wait", "Updating list...");
-    fetch(`${SERVER_ADDR}/list`, {
-        method: "POST",
-        headers: {
-            "Authorization": localStorage.getItem("jam_auth_token") || "",
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({order: list}),
-    }).then(async res => {
-        if (res.ok) {
-            const now = new Date();
-            const hours = now.getHours();
-            const minutes = now.getMinutes().toString().padStart(2, "0");
-            const seconds = now.getSeconds().toString().padStart(2, "0");
-            setInfo("success", `List updated ${hours}:${minutes}:${seconds}`);
-            setStatus("none", "");
-        } else {
-            serverError(res.status, await res.text());
-        }
-    });
-}
 
 // Tile movement handlers
 let move_target;
