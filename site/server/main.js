@@ -53,6 +53,7 @@ const jwt_secret = Buffer.from(config.server_secret, "hex");
 const express = require("express");
 const app = express();
 
+app.set("trust proxy", config.trust_proxy || false);
 app.use(require("cors")({exposedHeaders: ["Authorization"]}));
 app.use(require("express-rate-limit").rateLimit({
     limit: config.rate.limit,
