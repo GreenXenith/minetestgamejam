@@ -239,6 +239,10 @@ fetch(`${CDB_URL}/api/packages/?tag=${JAM_TAG}`).then(res => {
                 el_ctrl.appendChild(el_down);
                 el_pkg.appendChild(el_ctrl);
 
+                if (pkg.author == cdb_username) {
+                    el_pkg.setAttribute("title", "Your package will not count towards your own list.");
+                }
+
                 // Only allow movement if logged in
                 el_pkg.classList.add("movable");
                 el_pkg.addEventListener("mousedown", e => {
