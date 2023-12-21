@@ -141,9 +141,8 @@ const moveUp = (e) => {
         const el_pkg = e.target.parentNode.parentNode;
         if (el_pkg.previousSibling) {
             el_pkg.previousSibling.before(el_pkg);
+            updateList();
         }
-    
-        updateList();
     };
 
     e.preventDefault();
@@ -154,9 +153,8 @@ const moveDown = (e) => {
         const el_pkg = e.target.parentNode.parentNode;
         if (el_pkg.nextSibling) {
             el_pkg.nextSibling.after(el_pkg);
+            updateList();
         }
-    
-        updateList();
     }
 
     e.preventDefault();
@@ -255,6 +253,7 @@ fetch(`${CDB_URL}/api/packages/?tag=${JAM_TAG}`).then(res => {
 // Tile movement handlers
 let move_target;
 let mouseY = 0;
+let moved = false;
 const MOVE_SPEED = 0.15;
 const TRANSITION = `transition: top ${MOVE_SPEED}s ease-out;`;
 
@@ -277,6 +276,7 @@ const moveElement = () => {
             sibling.after(children[idx]);
             move_target.origin += height + rem; // Offset origin by sibling element height
 
+            moved = true;
             setTimeout(() => {sibling.removeAttribute("style");}, MOVE_SPEED * 1000);
         } else if (move_target.previousSibling && distance < -move_target.previousSibling.clientHeight) {
             const sibling = children[idx - 1];
@@ -288,6 +288,7 @@ const moveElement = () => {
             sibling.before(children[idx]);
             move_target.origin -= height + rem;
 
+            moved = true;
             setTimeout(() => {sibling.removeAttribute("style");}, MOVE_SPEED * 1000);
         }
 
@@ -308,7 +309,10 @@ document.body.addEventListener("mouseup", () => {
         move_target.removeAttribute("style");
         move_target = null;
 
-        updateList();
+        if (moved) {
+            updateList();
+            moved = false;
+        }
     }
 });
 
