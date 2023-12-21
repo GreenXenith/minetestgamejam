@@ -138,12 +138,29 @@ const updateList = () => {
     });
 }
 
+let queue = 0;
+
+const queueUpdate = () => {
+    if (queue++ == 0) { // Increment queue
+        updateList(); // Immediately update if nothing pending
+
+        setTimeout(() => {
+            // If more added, update again
+            if (queue > 1) {
+                updateList();
+            }
+
+            queue = 0; // Clear queue
+        }, config.queue_window * 1000);
+    }
+};
+
 const moveUp = (e) => {
     if (jam_auth_token) {
         const el_pkg = e.target.parentNode.parentNode;
         if (el_pkg.previousSibling) {
             el_pkg.previousSibling.before(el_pkg);
-            updateList();
+            queueUpdate();
         }
     };
 
@@ -155,7 +172,7 @@ const moveDown = (e) => {
         const el_pkg = e.target.parentNode.parentNode;
         if (el_pkg.nextSibling) {
             el_pkg.nextSibling.after(el_pkg);
-            updateList();
+            queueUpdate();
         }
     }
 
@@ -312,7 +329,7 @@ document.body.addEventListener("mouseup", () => {
         move_target = null;
 
         if (moved) {
-            updateList();
+            queueUpdate();
             moved = false;
         }
     }
