@@ -1,0 +1,3 @@
+config.json
+error_log.txt
+*.sqlite*
