@@ -108,9 +108,21 @@ const try_fetch = (url, options, tries = 5) => new Promise((resolve, reject) => 
 });
 
 let acceptable_length = 0;
+let maintainers = {};
 
 try_fetch(`${CDB_URL}/api/packages/?tag=${JAM_TAG}`).then(async res => {
-    acceptable_length = (await res.json()).length;
+    const list = await res.json();
+    acceptable_length = (list).length;
+
+    for (const pkg of list) {
+        try_fetch(`${CDB_URL}/api/packages/${pkg.author}/${pkg.name}`).then(async pkg_res => {
+            const info = await pkg_res.json();
+            for (const user of info.maintainers) {
+                if (!(user in maintainers)) maintainers[user] = [];
+                maintainers[user].push(pkg.name);
+            }
+        });
+    }
 });
 
 // Route: Authenticate user with ContentDB OAuth2 token
@@ -161,7 +173,7 @@ app.get("/auth", (req, res) => {
 
 // Route: Fetch package order for user
 app.get("/list", (req, res) => {
-    res.status(200).json({order: getOrder(req.username)});
+    res.status(200).json({order: getOrder(req.username), maintains: req.username in maintainers ? maintainers[req.username] : []});
 });
 
 // Route: Update package order for user

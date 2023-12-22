@@ -219,7 +219,7 @@ fetch(`${CDB_URL}/api/packages/?tag=${JAM_TAG}`).then(res => {
             el_desc.innerText = pkg.short_description;
             el_info.appendChild(el_desc);
 
-            const own_package = pkg.author == cdb_username; // NEED TO CHECK MAINTAINERS
+            const own_package = pkg.author == cdb_username;
             if (!jam_auth_token || own_package) {
                 el_pkg.classList.add("disabled");
             }
@@ -263,12 +263,20 @@ fetch(`${CDB_URL}/api/packages/?tag=${JAM_TAG}`).then(res => {
             query_sorted.then(async query_res => {
                 if (query_res.ok) {
                     const list = await query_res.json();
+
+                    for (const name in package_elements) {
+                        if (list.maintains.includes(name)) {
+                            package_elements[name].classList.add("disabled");
+                            package_elements[name].setAttribute("title", "Your package will not count towards your own list.");
+                        }
+                    }
+
                     if (list.order) {
                         if (list.order.join(",").length == Object.keys(package_elements).join(",").length) {
                             for (const name of list.order) {
                                 pkg_list.appendChild(package_elements[name]);
                             }
-    
+
                             setInfo("success", "Loaded saved list.");
                             return;
                         } else {
