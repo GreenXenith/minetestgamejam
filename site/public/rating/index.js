@@ -135,6 +135,9 @@ const updateList = () => {
 
             setInfo("success", `List saved ${hours}:${minutes}:${seconds}`);
             setStatus("none", "");
+        } else if (res.status == 400) {
+            setStatus("error", "Server error (400) - Package list may be outdated (refresh)");
+            console.error(`Error 400: ${await res.text()}`);
         } else {
             serverError(res.status, await res.text());
         }
@@ -272,16 +275,27 @@ fetch(`${CDB_URL}/api/packages/?tag=${JAM_TAG}`).then(res => {
                     }
 
                     if (list.order) {
-                        if (list.order.join(",").length == Object.keys(package_elements).join(",").length) {
-                            for (const name of list.order) {
+                        // Load known list
+                        let complete = [];
+                        for (const name of list.order) {
+                            pkg_list.appendChild(package_elements[name]);
+                            complete.push(name);
+                        }
+
+                        // Append remaining
+                        for (const name in package_elements) {
+                            if (!complete.includes(name)) {
                                 pkg_list.appendChild(package_elements[name]);
                             }
+                        }
 
+                        if (list.order.join(",").length == Object.keys(package_elements).join(",").length) {
                             setInfo("success", "Loaded saved list.");
-                            return;
                         } else {
                             setInfo("warning", "Saved list is outdated. Please sort again.");
                         }
+
+                        return;
                     } else {
                         setInfo("info", "Drag or use arrows to move items.");
                     }
