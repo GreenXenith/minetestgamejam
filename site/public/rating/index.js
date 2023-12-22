@@ -80,14 +80,14 @@ if (jam_auth_token) {
     document.getElementById("header-most").innerHTML = "&#x1F44D;&#xFE0F; Most Favorite";
     document.getElementById("header-least").classList.remove("hidden");
 
-    // setInfo("wait", "Fetching saved list...")
-    // query_sorted = fetch(`${SERVER_ADDR}/list`, {
-    //     headers: {
-    //         "Authorization": jam_auth_token,
-    //     }
-    // }).catch(err => {
-    //     clientError("err02", err.toString());
-    // });
+    setInfo("wait", "Fetching saved list...")
+    query_sorted = fetch(`${SERVER_ADDR}/list`, {
+        headers: {
+            "Authorization": jam_auth_token,
+        }
+    }).catch(err => {
+        clientError("err02", err.toString());
+    });
 } else {
     document.getElementById("login").setAttribute("href", OAUTH_URL);
 }
@@ -220,73 +220,73 @@ fetch(`${CDB_URL}/api/packages/?tag=${JAM_TAG}`).then(res => {
             el_info.appendChild(el_desc);
 
             const own_package = pkg.author == cdb_username; // NEED TO CHECK MAINTAINERS
-            // if (!jam_auth_token || own_package) {
+            if (!jam_auth_token || own_package) {
                 el_pkg.classList.add("disabled");
-            // }
+            }
 
-            // if (jam_auth_token) {
-            //     // Only add controls if logged in
-            //     const el_up = document.createElement("div");
-            //     el_up.innerHTML = "&#x1F53C;&#xFE0F;";
-            //     el_up.addEventListener("click", moveUp);
+            if (jam_auth_token) {
+                // Only add controls if logged in
+                const el_up = document.createElement("div");
+                el_up.innerHTML = "&#x1F53C;&#xFE0F;";
+                el_up.addEventListener("click", moveUp);
 
-            //     const el_down = document.createElement("div");
-            //     el_down.innerHTML = "&#x1F53D;&#xFE0F;";
-            //     el_down.addEventListener("click", moveDown);
+                const el_down = document.createElement("div");
+                el_down.innerHTML = "&#x1F53D;&#xFE0F;";
+                el_down.addEventListener("click", moveDown);
 
-            //     const el_ctrl = document.createElement("div");
-            //     el_ctrl.id = "pkg-ctrls";
-            //     el_ctrl.appendChild(el_up);
-            //     el_ctrl.appendChild(el_down);
-            //     el_pkg.appendChild(el_ctrl);
+                const el_ctrl = document.createElement("div");
+                el_ctrl.id = "pkg-ctrls";
+                el_ctrl.appendChild(el_up);
+                el_ctrl.appendChild(el_down);
+                el_pkg.appendChild(el_ctrl);
 
-            //     if (own_package) {
-            //         el_pkg.setAttribute("title", "Your package will not count towards your own list.");
-            //     }
+                if (own_package) {
+                    el_pkg.setAttribute("title", "Your package will not count towards your own list.");
+                }
 
-            //     // Only allow movement if logged in
-            //     el_pkg.classList.add("movable");
-            //     el_pkg.addEventListener("mousedown", e => {
-            //         if (e.target.classList.contains("movable")) {
-            //             move_target = e.target;
-            //             move_target.origin = e.clientY;
-            //             move_target.classList.add("moving");
-            //         }
-            //     });
-            // }
+                // Only allow movement if logged in
+                el_pkg.classList.add("movable");
+                el_pkg.addEventListener("mousedown", e => {
+                    if (e.target.classList.contains("movable")) {
+                        move_target = e.target;
+                        move_target.origin = e.clientY;
+                        move_target.classList.add("moving");
+                    }
+                });
+            }
 
             package_elements[pkg.name] = el_pkg;
         }
 
         // Sort package tiles if logged in
-        // if (jam_auth_token) {
-            // query_sorted.then(async query_res => {
-            //     if (query_res.ok) {
-            //         const list = await query_res.json();
-            //         if (list.order) {
-            //             if (list.order.join(",").length == Object.keys(package_elements).join(",").length) {
-            //                 for (const name of list.order) {
-            //                     pkg_list.appendChild(package_elements[name]);
-            //                 }
+        if (jam_auth_token) {
+            query_sorted.then(async query_res => {
+                if (query_res.ok) {
+                    const list = await query_res.json();
+                    if (list.order) {
+                        if (list.order.join(",").length == Object.keys(package_elements).join(",").length) {
+                            for (const name of list.order) {
+                                pkg_list.appendChild(package_elements[name]);
+                            }
     
-            //                 setInfo("success", "Loaded saved list.");
-            //                 return;
-            //             } else {
-            //                 setInfo("warning", "Saved list is outdated. Please sort again.");
-            //             }
-            //         } else {
-            //             setInfo("info", "Drag or use arrows to move items.");
-            //         }
-            //     } else {
-            //         serverError(query_res.status, await query_res.text());
-            //     }
+                            setInfo("success", "Loaded saved list.");
+                            return;
+                        } else {
+                            setInfo("warning", "Saved list is outdated. Please sort again.");
+                        }
+                    } else {
+                        setInfo("info", "Drag or use arrows to move items.");
+                    }
+                } else {
+                    serverError(query_res.status, await query_res.text());
+                }
 
-            //     // If query failed, no order returned, or outdated list: randomize
-            //     randomize_elements(pkg_list);
-            // });
-        // } else {
+                // If query failed, no order returned, or outdated list: randomize
+                randomize_elements(pkg_list);
+            });
+        } else {
             randomize_elements(pkg_list);
-        // }
+        }
     });
 }).catch(err => {
     clientError("err04", err.toString());
@@ -338,12 +338,12 @@ const moveElement = () => {
     }
 }
 
-// document.body.addEventListener("mousemove", e => {
-//     if (jam_auth_token) {
-//         mouseY = e.clientY;
-//         moveElement();
-//     }
-// });
+document.body.addEventListener("mousemove", e => {
+    if (jam_auth_token) {
+        mouseY = e.clientY;
+        moveElement();
+    }
+});
 
 const drop_handler = () => {
     if (move_target && jam_auth_token) {
@@ -358,8 +358,8 @@ const drop_handler = () => {
     }
 }
 
-// document.body.addEventListener("mouseup", drop_handler);
-// document.body.addEventListener("mouseleave", drop_handler);
+document.body.addEventListener("mouseup", drop_handler);
+document.body.addEventListener("mouseleave", drop_handler);
 
 // const doScroll = () => {
 //     const zone = mouseY / window.innerHeight;
