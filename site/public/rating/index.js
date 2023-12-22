@@ -187,7 +187,7 @@ const moveDown = (e) => {
     e.preventDefault();
 };
 
-fetch(`${CDB_URL}/api/packages/?tag=${JAM_TAG}`).then(res => {
+fetch(`${CDB_URL}/api/packages/?tag=${JAM_TAG}`, {cache: "reload"}).then(res => {
     res.text().then(text => {
         // Add package tiles
         const pkg_list = document.getElementById("packages");
