@@ -88,6 +88,10 @@ html, body {
     background: var(--color-main);
 }
 
+html {
+    background-color: #2d4b47;
+}
+
 body {
     display: flex;
     flex-direction: column;
