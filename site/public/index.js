@@ -23,7 +23,7 @@ window.addEventListener("load", () => {
     const dates = [
         ["to work on your games", new Date("2023-12-21T23:59Z")],
         ["to finish and submit your games", new Date("2023-12-22T00:59Z")],
-        [`to <a href="/rating">rank submissions</a>`, new Date("2023-12-28T23:59Z")],
+        [`to <a href="/rating">rank submissions</a>`, new Date("2023-12-30T23:59Z")],
     ];
 
     [...document.getElementsByClassName("date")].forEach(e => {
