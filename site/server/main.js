@@ -41,6 +41,7 @@ db.exec("CREATE TABLE IF NOT EXISTS scores (user TEXT UNIQUE PRIMARY KEY NOT NUL
 const db_add_order = db.prepare("INSERT INTO scores (user, pkg_order) VALUES (@user, @pkg_order)");
 const db_set_order = db.prepare("UPDATE scores SET pkg_order = @pkg_order WHERE user = @user");
 const db_get_order = db.prepare("SELECT pkg_order FROM scores WHERE user = @user");
+const db_del_order = db.prepare("DELETE FROM scores WHERE user = @user");
 
 const getOrder = (username) => {
     const result = db_get_order.get({user: username});
@@ -195,6 +196,22 @@ app.post("/list", (req, res) => {
         } else {
             res.status(500).send("no changes made");
         }
+    } catch(err) {
+        server_error(res, "database update failed", err);
+    }
+});
+
+app.post("/clear", (req, res) => {
+    try {
+        const query = db_del_order.run({
+            user: req.username,
+        });
+
+        if (query.changes > 0) {
+            res.status(200).send("ok")
+        } else {
+            res.status(500).send("no changes made");
+        };
     } catch(err) {
         server_error(res, "database update failed", err);
     }

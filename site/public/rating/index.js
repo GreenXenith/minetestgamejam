@@ -69,6 +69,33 @@ if (jam_auth_token) {
     el_logout.classList.remove("hidden");
 
     document.getElementById("logout").innerText = `Log Out (${localStorage.getItem("cdb_username")})`;
+    
+    document.getElementById("clear").addEventListener("click", () => {
+        if (confirm("Would you like to delete your ranking list from the server?")) {
+            fetch(`${SERVER_ADDR}/clear`, {
+                method: "POST",
+                headers: {
+                    "Authorization": localStorage.getItem("jam_auth_token") || "",
+                },
+            }).then(async res => {
+                if (res.ok) {
+                    document.getElementById("clear").classList.add("hidden");
+
+                    const now = new Date();
+                    const hours = now.getHours();
+                    const minutes = now.getMinutes().toString().padStart(2, "0");
+                    const seconds = now.getSeconds().toString().padStart(2, "0");
+        
+                    setInfo("success", `List cleared ${hours}:${minutes}:${seconds}`);
+                    setStatus("none", "");
+                } else {
+                    serverError(res.status, await res.text());
+                }
+            }).catch(err => {
+                clientError("err05", err.toString());
+            });
+        }
+    });
 
     document.getElementById("info").innerText = "Changes are saved automatically.";
 
@@ -128,6 +155,8 @@ const updateList = () => {
         body: JSON.stringify({order: list}),
     }).then(async res => {
         if (res.ok) {
+            document.getElementById("clear").classList.remove("hidden");
+
             const now = new Date();
             const hours = now.getHours();
             const minutes = now.getMinutes().toString().padStart(2, "0");
@@ -275,6 +304,8 @@ fetch(`${CDB_URL}/api/packages/?tag=${JAM_TAG}`, {cache: "reload"}).then(res => 
                     }
 
                     if (list.order) {
+                        document.getElementById("clear").classList.remove("hidden");
+
                         // Load known list
                         let complete = [];
                         for (const name of list.order) {
