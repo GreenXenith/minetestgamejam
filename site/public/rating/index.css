@@ -264,7 +264,7 @@ h2 {
     box-shadow: 0 0 8px #00000044;
 }
 
-.package.disabled {
+.disabled {
     filter: saturate(0.25);
 }
 

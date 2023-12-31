@@ -70,32 +70,36 @@ if (jam_auth_token) {
 
     document.getElementById("logout").innerText = `Log Out (${localStorage.getItem("cdb_username")})`;
     
-    document.getElementById("clear").addEventListener("click", () => {
-        if (confirm("Would you like to delete your ranking list from the server?")) {
-            fetch(`${SERVER_ADDR}/clear`, {
-                method: "POST",
-                headers: {
-                    "Authorization": localStorage.getItem("jam_auth_token") || "",
-                },
-            }).then(async res => {
-                if (res.ok) {
-                    document.getElementById("clear").classList.add("hidden");
-
-                    const now = new Date();
-                    const hours = now.getHours();
-                    const minutes = now.getMinutes().toString().padStart(2, "0");
-                    const seconds = now.getSeconds().toString().padStart(2, "0");
-        
-                    setInfo("success", `List cleared ${hours}:${minutes}:${seconds}`);
-                    setStatus("none", "");
-                } else {
-                    serverError(res.status, await res.text());
-                }
-            }).catch(err => {
-                clientError("err05", err.toString());
-            });
-        }
-    });
+    if (!config.disabled) {
+        document.getElementById("clear").addEventListener("click", () => {
+            if (confirm("Would you like to delete your ranking list from the server?")) {
+                fetch(`${SERVER_ADDR}/clear`, {
+                    method: "POST",
+                    headers: {
+                        "Authorization": localStorage.getItem("jam_auth_token") || "",
+                    },
+                }).then(async res => {
+                    if (res.ok) {
+                        document.getElementById("clear").classList.add("hidden");
+    
+                        const now = new Date();
+                        const hours = now.getHours();
+                        const minutes = now.getMinutes().toString().padStart(2, "0");
+                        const seconds = now.getSeconds().toString().padStart(2, "0");
+            
+                        setInfo("success", `List cleared ${hours}:${minutes}:${seconds}`);
+                        setStatus("none", "");
+                    } else {
+                        serverError(res.status, await res.text());
+                    }
+                }).catch(err => {
+                    clientError("err05", err.toString());
+                });
+            }
+        });
+    } else {
+        document.getElementById("clear").classList.add("disabled");
+    }
 
     document.getElementById("info").innerText = "Changes are saved automatically.";
 
@@ -178,6 +182,8 @@ const updateList = () => {
 let queue = 0;
 
 const queueUpdate = () => {
+    if (config.disabled) return;
+
     if (queue++ == 0) { // Increment queue
         updateList(); // Immediately update if nothing pending
 
@@ -252,7 +258,7 @@ fetch(`${CDB_URL}/api/packages/?tag=${JAM_TAG}`, {cache: "reload"}).then(res => 
             el_info.appendChild(el_desc);
 
             const own_package = pkg.author == cdb_username;
-            if (!jam_auth_token || own_package) {
+            if (!jam_auth_token || own_package || config.disabled) {
                 el_pkg.classList.add("disabled");
             }
 
@@ -276,15 +282,17 @@ fetch(`${CDB_URL}/api/packages/?tag=${JAM_TAG}`, {cache: "reload"}).then(res => 
                     el_pkg.setAttribute("title", "Your package will not count towards your own list.");
                 }
 
-                // Only allow movement if logged in
-                el_pkg.classList.add("movable");
-                el_pkg.addEventListener("mousedown", e => {
-                    if (e.target.classList.contains("movable")) {
-                        move_target = e.target;
-                        move_target.origin = e.clientY;
-                        move_target.classList.add("moving");
-                    }
-                });
+                // Only allow movement if logged in and enabled
+                if (!config.disabled) {
+                    el_pkg.classList.add("movable");
+                    el_pkg.addEventListener("mousedown", e => {
+                        if (e.target.classList.contains("movable")) {
+                            move_target = e.target;
+                            move_target.origin = e.clientY;
+                            move_target.classList.add("moving");
+                        }
+                    });
+                }
             }
 
             package_elements[pkg.name] = el_pkg;
