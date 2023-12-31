@@ -24,6 +24,7 @@ window.addEventListener("load", () => {
         ["to work on your games", new Date("2023-12-21T23:59Z")],
         ["to finish and submit your games", new Date("2023-12-22T00:59Z")],
         [`to <a href="/rating">rank submissions</a>`, new Date("2023-12-30T23:59Z")],
+        ["Results soon"],
     ];
 
     [...document.getElementsByClassName("date")].forEach(e => {
@@ -43,7 +44,7 @@ window.addEventListener("load", () => {
     // Closest date
     let i = 0;
     let next = dates[0];
-    while (next[1] <= Date.now()) {
+    while (next[1] && next[1] <= Date.now()) {
         next = dates[++i];
     }
 
@@ -63,13 +64,15 @@ window.addEventListener("load", () => {
                 el_next.innerHTML = next[0];
             }
         } else {
-            timer.innerHTML = next[1];
+            timer.innerHTML = next[0];
+            el_next.innerHTML = "";
         }
     }, 1000);
 
     if (Date.parse(next[1])) {
         updateTimer(timer, Math.max(0, (next[1] - Date.now()) / 1000));
     } else {
-        timer.innerHTML = next[1];
+        timer.innerHTML = next[0];
+        el_next.innerHTML = "";
     }
 });
