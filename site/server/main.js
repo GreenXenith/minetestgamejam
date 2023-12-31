@@ -178,7 +178,7 @@ app.get("/list", (req, res) => {
 });
 
 // Route: Update package order for user
-app.post("/list", (req, res) => {
+if (!config.disabled) app.post("/list", (req, res) => {
     const list = req.body.order;
 
     if (list.length != acceptable_length) {
@@ -201,7 +201,7 @@ app.post("/list", (req, res) => {
     }
 });
 
-app.post("/clear", (req, res) => {
+if (!config.disabled) app.post("/clear", (req, res) => {
     try {
         const query = db_del_order.run({
             user: req.username,
