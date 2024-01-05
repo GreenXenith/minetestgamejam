@@ -18,7 +18,21 @@ function updateTimer(timer, remaining) {
     timer.innerHTML = (parts[3] > 0 ? `${parts[3]}.` : "") + parts.slice(0, 3).map(v => v.toString().padStart(2, "0")).join(":");
 }
 
-window.addEventListener("load", () => {
+const CDB_URL = "https://content.minetest.net";
+
+window.addEventListener("load", async () => {
+    if (document.getElementById("winners")) {
+        for (const e of document.getElementsByClassName("package")) {
+            const id = e.getAttribute("data-id");
+            e.setAttribute("href", `${CDB_URL}/packages/${id}`);
+
+            const res = await fetch(`${CDB_URL}/api/packages/${id}/`);
+            e.children[1].setAttribute("src", (await res.json()).screenshots[0]);
+        };
+
+        return;
+    };
+
     // Dates
     const dates = [
         ["to work on your games", new Date("2023-12-21T23:59Z")],

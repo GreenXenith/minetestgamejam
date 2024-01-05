@@ -383,6 +383,93 @@ strong {
     color: var(--color-link-hover);
 }
 
+#winners {
+    display: flex;
+    width: 75%;
+    align-items: center;
+    flex-direction: column;
+}
+
+#winners > h2 {
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    text-shadow: 2px 2px var(--shadow-color);
+}
+
+#winners div {
+    display: flex;
+    position: relative;
+}
+
+.package {
+    border-radius: 5px;
+    margin: 1rem;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+.package h2 {
+    margin: 0.5rem 1rem;
+    position: absolute;
+    text-shadow: 1px 1px var(--shadow-color);
+}
+
+.package img {
+    width: 100%;
+    min-height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.package::after {
+    position: absolute;
+    content: attr(data-place);
+    color: white;
+    bottom: 0;
+    right: 0;
+    margin: 0.5rem 1rem;
+    text-shadow: 1px 1px var(--shadow-color);
+}
+
+.package[data-place="1st"] {
+    --scale: 1.1;
+    transform: scale(var(--scale));
+    margin-left: 1.5rem;
+    margin-right: 0.5rem;
+}
+
+.package[data-place="2nd"] {
+    --scale: 1;
+}
+
+.package[data-place="3rd"] {
+    --scale: 0.9;
+    transform: scale(var(--scale));
+}
+
+.package:hover {
+    transform: scale(calc(var(--scale) * 1.1));
+    box-shadow: 0 4px 10px var(--shadow-color);
+}
+
+#winners > a {
+    margin-top: 1rem;
+    color: var(--color-link);
+}
+
+#winners > a {
+    margin-top: 1rem;
+    color: var(--color-link);
+    text-shadow: 1px 1px 2px var(--shadow-color);
+}
+
+#winners > a:hover {
+    color: var(--color-link-hover);
+}
+
 #schedule table {
     border-spacing: 0.5rem;
 }
