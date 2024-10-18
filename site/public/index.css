@@ -560,7 +560,7 @@ strong {
 
 .prize .prize-title {
     font-weight: bold;
-    text-shadow: 1px 1px var(--shadow-color);
+    text-shadow: 2px 2px var(--shadow-color);
     font-size: 1.3rem;
     margin-bottom: 0.5rem;
     text-transform: uppercase;
