@@ -1,19 +1,19 @@
 /* Config */
 :root {
-    --color-1: #91c500;
-    --color-2: rgb(27, 187, 139);
-    --color-3: rgb(0, 156, 104);
-    --color-4: rgb(14, 109, 73);
-    --color-5: rgb(6, 83, 51);
-    --color-6: rgb(1, 61, 21);
-    --color-7: rgb(58, 161, 165);
+    --color-1: #ffa024;
+    --color-2: rgb(58, 161, 165);
+    --color-3: rgb(27, 187, 139);
+    --color-4: rgb(0, 156, 104);
+    --color-5: rgb(14, 109, 73);
+    --color-6: rgb(6, 83, 51);
+    --color-7: rgb(1, 61, 21);
 
     --color-link: rgb(255, 169, 147);
     --color-link-hover: rgb(255, 204, 192);
 
-    --color-main: var(--color-7);
+    --color-main: var(--color-2);
 
-    --sections: 6;
+    --sections: 7;
     --shadow-color: #00000088;
     --section-shadow: 0 2px 8px var(--shadow-color);
 }
@@ -88,11 +88,15 @@ html, body {
     background: var(--color-main);
 }
 
+html {
+    background-color: #2d4b47;
+}
+
 body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: radial-gradient(circle, #94d3ce, #2d474b 70%);
+    background: radial-gradient(circle, #a9d1c1, #2d4b47 70%);
     background-attachment: fixed;
 }
 
@@ -340,7 +344,7 @@ strong {
 }
 
 #countdown {
-    padding-top: 2rem;
+    padding-top: 4rem;
     transform-origin: bottom right;
     display: flex;
     justify-content: center;
@@ -364,7 +368,7 @@ strong {
     top: 1rem;
     width: max-content;
     margin-left: 0.5rem;
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 600;
     text-transform: uppercase;
     text-shadow: 1px 1px var(--shadow-color);
@@ -537,6 +541,10 @@ strong {
     font-weight: bold;
 }
 
+#prizes > p {
+    margin-top: 1rem;
+}
+
 #prizes h2 {
     margin-top: 2rem;
     text-transform: uppercase;
@@ -547,7 +555,8 @@ strong {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: var(--color-4);
+    text-align: center;
+    background-color: var(--color-5);
     margin-top: 1rem;
     padding: 1rem;
     border-radius: 5px;
@@ -558,33 +567,12 @@ strong {
     font-size: 1.1rem;
 }
 
-.prize .prize-title {
-    font-weight: bold;
-    text-shadow: 1px 1px var(--shadow-color);
-    font-size: 1.3rem;
-    margin-bottom: 0.5rem;
-    text-transform: uppercase;
-}
-
 .prize sub {
     font-size: 0.8rem;
-    margin-top: 0.5rem;
-    text-align: center;
 }
 
 .prize img {
     width: 25%;
-}
-
-.prize #shirts {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-}
-
-.prize #shirts img {
-    margin: 0.5rem;
-    box-shadow: 3px 3px 4px 1px var(--shadow-color);
 }
 
 #footer {

@@ -35,10 +35,9 @@ window.addEventListener("load", async () => {
 
     // Dates
     const dates = [
-        ["until the jam starts", new Date("2024-11-01T00:00Z")],
-        ["to work on your games", new Date("2024-11-22T00:00Z")],
-        ["to finish and submit your games", new Date("2024-11-23T00:00Z")],
-        [`to <a href="/rating">rank submissions</a>`, new Date("2024-11-30T00:00Z")],
+        ["to work on your games", new Date("2023-12-21T23:59Z")],
+        ["to finish and submit your games", new Date("2023-12-22T00:59Z")],
+        [`to <a href="/rating">rank submissions</a>`, new Date("2023-12-30T23:59Z")],
         ["Results soon"],
     ];
 
