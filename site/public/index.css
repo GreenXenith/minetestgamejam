@@ -495,6 +495,13 @@ strong {
     list-style-type: square;
 }
 
+#rules blockquote {
+    background-color: var(--color-4);
+    padding: 0.2rem 0.5rem;
+    border-left: 0.5rem solid var(--color-5);
+    margin: 1.25rem 0 0.5rem;
+}
+
 #scoring h2 {
     text-transform: uppercase;
     text-shadow: 2px 2px var(--shadow-color);
